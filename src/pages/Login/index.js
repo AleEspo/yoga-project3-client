@@ -1,27 +1,43 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
+import { useNavigate } from "react-router-dom";
+import { LoginForm } from "../../components/LoginForm";
+
 
 export function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
+  //desestruturo o setLoggedInUser do AuthContext
+  const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
+
+  console.log(loggedInUser);
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form);
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-        const response = await api.post("/user/login", form)
+      const response = await api.post("/user/login", form);
 
-        // preciso salvar o os datos + o token no localstorage do browser pra puder utiliza-lo
-        // key que chamo "loggedInUser" e vou guardar 
-        localStorage.setItem("loggedInUser", JSON.stringify(response.data))
+      // preciso salvar o os datos + o token no localstorage do browser pra puder utiliza-lo
+      // key que chamo "loggedInUser" e vou guardar
+      localStorage.setItem("loggedInUser", JSON.stringify(response.data));
 
-        console.log(response.data)
+      //mudo o meu Context na hora do login
+      setLoggedInUser(response.data);
+
+      navigate("/profile");
+
+      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -29,7 +45,8 @@ export function Login() {
 
   return (
     <>
-      <h1>Login</h1>
+      <LoginForm handleChange={handleChange} handleSubmit={handleSubmit} signupLink={"/signup"}/>
+      {/* <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="input-email">E-mail:</label>
         <input
@@ -48,7 +65,7 @@ export function Login() {
           name="password"
         />
         <button>Log In</button>
-      </form>
+      </form> */}
     </>
   );
 }

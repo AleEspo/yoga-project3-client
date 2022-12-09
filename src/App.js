@@ -1,16 +1,30 @@
-import {Home} from "./pages/Home"
-import {Routes, Route} from "react-router-dom"
+import { Home } from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
 import { SignUp } from "./pages/Signup";
-import { Login } from "./pages/Login"
+import { Login } from "./pages/Login";
+import { AuthContextComponent } from "./context/authContext";
+import { Profile } from "./pages/Profile/index";
+import { Practice } from "./pages/Practice";
+import { ProtectedUserRouter } from "./components/ProtectedUserRoutes";
+import { PageNotFound } from "./pages/NotFound";
+import { CreatePractice } from "./pages/CreatePractice";
+import { ProtectedTeacherRouter } from "./components/ProtectedTeacherRoutes";
+import "./styles/global.css"
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/signup" element={<SignUp />}/>
-        <Route path="/login" element={<Login />}/>
-      </Routes>
+      <AuthContextComponent>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/practice/create" element={<ProtectedTeacherRouter Component={CreatePractice} />} />
+          <Route path="/profile" element={<ProtectedUserRouter Component={Profile} />} />
+          <Route path="/practice" element={<Practice />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </AuthContextComponent>
     </>
   );
 }
