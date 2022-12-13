@@ -5,7 +5,6 @@ import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
-import { NextPractices } from "../NextPractices";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,6 +15,7 @@ export function NavBar(props) {
   const [userData, setUserData] = useState({});
 
   const { setLoggedInUser } = useContext(AuthContext);
+  const { loggedInUser, loading } = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchUser() {
@@ -56,9 +56,8 @@ export function NavBar(props) {
     { name: "Your Students?", href: "#", current: false },
   ];
   const userNavigation = [
-    { name: "Your Profile", href: "#" },
     { name: "Settings", href: "#" },
-    { name: "Sign out", href: { handleLogOut } },
+    { name: "Sign out", href: "#" },
   ];
   return (
     <>
@@ -104,58 +103,83 @@ export function NavBar(props) {
                       </div>
                     </div>
                   </div>
-                  <div className="hidden md:block">
-                    <div className="ml-4 flex items-center md:ml-6">
-                      <button
-                        type="button"
-                        className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      >
-                        <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button>
+                  {loggedInUser ? (
+                    <>
+                      <div className="hidden md:block">
+                        <div className="ml-4 flex items-center md:ml-6">
+                          <button
+                            type="button"
+                            className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                          >
+                            <span className="sr-only">View notifications</span>
+                            <BellIcon className="h-6 w-6" aria-hidden="true" />
+                          </button>
 
-                      {/* Profile dropdown */}
-                      <Menu as="div" className="relative ml-3">
-                        <div>
-                          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                            <span className="sr-only">Open user menu</span>
-                            <img
-                              className="h-8 w-8 rounded-full"
-                              src={user.imageUrl}
-                              alt=""
-                            />
-                          </Menu.Button>
+                          {/* Profile dropdown */}
+                          <Menu as="div" className="relative ml-3">
+                            <div>
+                              <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                <span className="sr-only">Open user menu</span>
+                                <img
+                                  className="h-8 w-8 rounded-full"
+                                  src={user.imageUrl}
+                                  alt=""
+                                />
+                              </Menu.Button>
+                            </div>
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95"
+                              enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75"
+                              leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95"
+                            >
+                              <Link to="/login">
+                                <button
+                                  type="button"
+                                  className="inline-block px-6 py-2.5 mr-2 bg-transparent text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
+                                  data-mdb-ripple="true"
+                                  data-mdb-ripple-color="light"
+                                >
+                                  Login
+                                </button>
+                              </Link>
+                              <Link to="/signup">
+                                <button
+                                  type="button"
+                                  className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                                  data-mdb-ripple="true"
+                                  data-mdb-ripple-color="light"
+                                >
+                                  Sign up for free
+                                </button>
+                              </Link>
+                            </Transition>
+                          </Menu>
                         </div>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+                        <a
+                          href="!#"
+                          className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                         >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            {userNavigation.map((item) => (
-                              <Menu.Item key={item.name}>
-                                {({ active }) => (
-                                  <a
-                                    href={item.href}
-                                    className={classNames(
-                                      active ? "bg-gray-100" : "",
-                                      "block px-4 py-2 text-sm text-gray-700"
-                                    )}
-                                  >
-                                    {item.name}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                            ))}
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
-                    </div>
-                  </div>
+                          Sign in
+                        </a>
+                        <a
+                          href="!#"
+                          className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        >
+                          Sign up
+                        </a>
+                      </div>
+                    </>
+                  )}
+
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -221,23 +245,28 @@ export function NavBar(props) {
                     </button>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
-                    {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                      >
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
+                    <Disclosure.Button
+                      key="Settings"
+                      as="a"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    >
+                      Settings
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      onClick={handleLogOut}
+                      key="Sign Out"
+                      as="a"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    >
+                      Sign Out
+                    </Disclosure.Button>
                   </div>
                 </div>
               </Disclosure.Panel>
             </>
           )}
         </Disclosure>
-        </div>
-        </>
-        )
-        }
+      </div>
+    </>
+  );
+}

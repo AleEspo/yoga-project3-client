@@ -12,18 +12,21 @@ import { ProtectedTeacherRouter } from "./components/Routes/ProtectedTeacherRout
 import "./styles/global.css"
 import { MyOrders } from "./pages/MyOrders";
 import { ProfileDashboard } from "./components/ProfileDashboard";
+import { NavBar } from "./components/NavBar - 1";
+import { NavBarTest } from "./components/NavBarTest";
 
 
 function App() {
   return (
     <>
       <AuthContextComponent>
+      <NavBarTest/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/practice/create" element={<ProtectedTeacherRouter Component={CreatePractice} />} />
-          <Route path="/profile" element={<ProtectedUserRouter Component={ProfileDashboard} />} />
+          <Route path="/profile" element={<ProtectedUserRouter Component={Profile} />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/order/my-orders" element={<ProtectedUserRouter Component={MyOrders} />} />
           <Route path="*" element={<PageNotFound />} />

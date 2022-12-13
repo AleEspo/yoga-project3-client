@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { ProfileDashboard } from "../../components/ProfileDashboard";
-import { NavBar } from "../../components/NavBar - no";
+import { NavBar } from "../../components/NavBar - 1";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export function Profile() {
 
   return (
     <>
-      <NavBar />
+    <NavBar/>
       <h1>{userData.name}</h1>
       <Link to="/practice">
         <button>Practice</button>
