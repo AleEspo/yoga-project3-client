@@ -11,16 +11,14 @@ import { CreatePractice } from "./pages/CreatePractice";
 import { ProtectedTeacherRouter } from "./components/Routes/ProtectedTeacherRoutes";
 import "./styles/global.css"
 import { MyOrders } from "./pages/MyOrders";
-import { ProfileDashboard } from "./components/ProfileDashboard";
-import { NavBar } from "./components/NavBar - 1";
-import { NavBarTest } from "./components/NavBarTest";
+import { NavBar} from "./components/NavBar";
 
 
 function App() {
   return (
     <>
       <AuthContextComponent>
-      <NavBarTest/>
+      <NavBar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />

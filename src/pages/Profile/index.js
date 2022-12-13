@@ -2,8 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
-import { ProfileDashboard } from "../../components/ProfileDashboard";
-import { NavBar } from "../../components/NavBar - 1";
+import { NavBar } from "../../components/NavBar";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -38,17 +37,6 @@ export function Profile() {
 
   return (
     <>
-    <NavBar/>
-      <h1>{userData.name}</h1>
-      <Link to="/practice">
-        <button>Practice</button>
-      </Link>
-      {userData.role === "TEACHER" ? (
-        <Link to="/practice/create">
-          <button>Create new practice</button>
-        </Link>
-      ) : null}
-      <button onClick={handleLogOut}>Log Out</button>
     </>
   );
 }

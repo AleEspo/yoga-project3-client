@@ -3,10 +3,6 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useState, useEffect } from "react";
 import { api } from "../../api/api";
-import { HomeTest } from "../../components/Test/test";
-import { HomeTest2 } from "../../components/Test2";
-import { NavBar2 } from "../../components/NavBar - 2";
-import { NavBar } from "../../components/NavBar - 1";
 
 export function Home() {
   const navigate = useNavigate();

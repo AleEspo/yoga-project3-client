@@ -29,7 +29,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function NavBarTest() {
+export function NavBar() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
 
