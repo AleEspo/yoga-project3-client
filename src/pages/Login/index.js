@@ -35,7 +35,7 @@ export function Login() {
       //mudo o meu Context na hora do login
       setLoggedInUser(response.data);
 
-      navigate("/profile");
+      navigate("/");
 
       console.log(response.data);
     } catch (err) {
