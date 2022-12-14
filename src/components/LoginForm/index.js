@@ -66,7 +66,8 @@ export function LoginForm(props) {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
+{/* REMEMBER ME & FORGOT PASSWORD */}
+            {/* <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
                   id="remember-me"
@@ -83,14 +84,13 @@ export function LoginForm(props) {
               </div>
 
               <div className="text-sm">
-                <a
-                  href="#"
+                <button
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
-                </a>
+                </button>
               </div>
-            </div>
+            </div> */}
 
             <div>
               <button

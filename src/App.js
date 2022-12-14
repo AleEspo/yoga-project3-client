@@ -10,7 +10,7 @@ import { PageNotFound } from "./pages/NotFound";
 import { CreatePractice } from "./pages/CreatePractice";
 import { ProtectedTeacherRouter } from "./components/Routes/ProtectedTeacherRoutes";
 import "./styles/global.css"
-import { MyOrders } from "./pages/MyOrders";
+import { MyOrders } from "./pages/MyClasses";
 import { NavBar} from "./components/NavBar";
 import { OurTeachers } from "./pages/OurTeachers";
 import { YourStudents } from "./pages/YourStudents";

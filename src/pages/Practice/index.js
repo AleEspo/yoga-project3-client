@@ -61,9 +61,11 @@ export function Practice() {
       <>
         <div className="container my-24 px-6 mx-auto">
           <section className="mb-32 text-gray-800 text-center">
-            <h2 className="text-3xl font-bold mb-12 pb-4 text-center">
+            <h2 className="text-3xl font-bold mb-8 pb-4 text-center">
               Choose your practice
             </h2>
+            <h4 className="font-semibold text-xl text-center mb-12">
+Here you can find a list of all Yoga classes available. Type something in the searchbar and book your next Yoga Class.</h4>
             <SearchBar
               filteredFunction={setFilteredPractices}
               allPractices={practice}

@@ -21,7 +21,7 @@ export function NavBar() {
     { name: "Home", href: "/", current: true },
     { name: "Practice", href: "/practice", current: false },
     { name: "Profile", href: "/profile", current: false },
-    { name: "My Practices", href: "/order/my-orders", current: false },
+    { name: "My Classes", href: "/order/my-orders", current: false },
     { name: "Our Teachers", href: "/our-teachers", current: false },
   ];
   // const userNavigation = [
@@ -142,14 +142,16 @@ export function NavBar() {
                               <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <Menu.Item key="Settings">
                                   {({ active }) => (
-                                    <div
-                                      className={classNames(
-                                        active ? "bg-gray-100" : "",
-                                        "block px-4 py-2 text-sm text-gray-700"
-                                      )}
-                                    >
-                                      Settings
-                                    </div>
+                                    <Link to="/profile/settings">
+                                      <div
+                                        className={classNames(
+                                          active ? "bg-gray-100" : "",
+                                          "block px-4 py-2 text-sm text-gray-700"
+                                        )}
+                                      >
+                                        Edit profile
+                                      </div>
+                                    </Link>
                                   )}
                                 </Menu.Item>
 

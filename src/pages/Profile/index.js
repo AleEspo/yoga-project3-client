@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
+import { ProfilePage } from "../../components/ProfilePage";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export function Profile() {
 
   return (
     <>
+    <ProfilePage/>
     </>
   );
 }
