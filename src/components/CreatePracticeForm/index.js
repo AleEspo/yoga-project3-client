@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 export default function CreatePracticeForm(props) {
+
+  const [previewImg, setPreviewImg] = useState("")
+
   return (
     <>
       <div>
@@ -225,8 +230,13 @@ export default function CreatePracticeForm(props) {
                               name="img"
                               type="file"
                               className="sr-only"
-                              onChange={props.handleImg}
+                              onChange={(e)=>{
+                                const url = URL.createObjectURL(e.target.files[0])
+                                setPreviewImg(url)
+                                props.handleImg(e)
+                              }}
                             />
+                            <img src={previewImg}/>
                           </label>
                           <p className="pl-1">or drag and drop</p>
                         </div>

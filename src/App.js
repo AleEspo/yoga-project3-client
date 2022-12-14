@@ -12,6 +12,9 @@ import { ProtectedTeacherRouter } from "./components/Routes/ProtectedTeacherRout
 import "./styles/global.css"
 import { MyOrders } from "./pages/MyOrders";
 import { NavBar} from "./components/NavBar";
+import { OurTeachers } from "./pages/OurTeachers";
+import { YourStudents } from "./pages/YourStudents";
+import { ModifyProfile } from "./pages/ModifyProfile";
 
 
 function App() {
@@ -27,6 +30,9 @@ function App() {
           <Route path="/profile" element={<ProtectedUserRouter Component={Profile} />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/order/my-orders" element={<ProtectedUserRouter Component={MyOrders} />} />
+          <Route path="/our-teachers" element={<OurTeachers/>}/>
+          <Route path="/your-students" element={<YourStudents/>}/>
+          <Route path="/profile/settings" element={<ModifyProfile/>}/>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthContextComponent>
