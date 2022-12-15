@@ -38,6 +38,27 @@ export function MyOrders() {
     fetchTeacherPractices();
   }, []);
 
+  async function cancelClass(practiceId) {
+    try {
+      const response = await api.delete(`/practice/${practiceId}`);
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+  async function cancelBooking(practiceId) {
+    try {
+      const response = await api.patch(`/update-status/:orderId${practiceId}`);
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <>
       <div className="container my-24 px-6 mx-auto" id="latest-classes">
@@ -45,7 +66,8 @@ export function MyOrders() {
         <section className="mb-32 text-gray-800 text-center md:text-left">
           <h2 className="text-3xl font-bold mb-8 text-center">My Classes</h2>
           <h4 className="font-semibold text-xl text-center mb-12">
-            Hello {loggedInUser.user.name}, here you can find your next classes coming up!
+            Hello {loggedInUser.user.name}, here you can find your next classes
+            coming up!
           </h4>
 
           {loggedInUser.user.role === "USER" ? (
@@ -81,7 +103,7 @@ export function MyOrders() {
 
                     <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-6 md:mb-0 mr-auto">
                       <h5 className="text-lg font-bold mb-3">
-                        {currentPractice._id}
+                        {currentPractice.name} {currentPractice._id}
                       </h5>
                       <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
                         <svg
@@ -108,11 +130,15 @@ export function MyOrders() {
                         {currentPractice.description}
                       </p>
                       <button
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                          >Cancel booking
-                          </button>
+                      onClick={()=>{
+                        cancelBooking(currentPractice._id)
+                      }}
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                        className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      >
+                        Cancel booking
+                      </button>
                     </div>
                   </div>
                 );
@@ -151,7 +177,7 @@ export function MyOrders() {
 
                   <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-6 md:mb-0 mr-auto">
                     <h5 className="text-lg font-bold mb-3">
-                      {currentPractice.name}
+                      {currentPractice.name} {currentPractice._id}
                     </h5>
                     <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
                       <svg
@@ -178,11 +204,15 @@ export function MyOrders() {
                       {currentPractice.description}
                     </p>
                     <button
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                          >Cancel class
-                          </button>
+                      onClick={() => {
+                        cancelClass(currentPractice._id);
+                      }}
+                      data-mdb-ripple="true"
+                      data-mdb-ripple-color="light"
+                      className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    >
+                      Cancel class
+                    </button>
                   </div>
                 </div>
               );

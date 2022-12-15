@@ -11,30 +11,22 @@ function classNames(...classes) {
 }
 
 export function NavBar() {
-  const user = {
-    name: "Tom Cook",
-    email: "tom@example.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  };
-  const navigation = [
-    { name: "Home", href: "/", current: true },
-    { name: "Practice", href: "/practice", current: false },
-    { name: "Profile", href: "/profile", current: false },
-    { name: "My Classes", href: "/order/my-orders", current: false },
-    { name: "Our Teachers", href: "/our-teachers", current: false },
-  ];
-  // const userNavigation = [
-  //   { name: "Your Profile", href: "#" },
-  //   { name: "Settings", href: "#" },
-  //   { name: "Sign out", href: "#" },
-  // ];
 
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
+  // const [isTeacher, setIsTeacher] = useState(false)
+  
 
   const { setLoggedInUser } = useContext(AuthContext);
   const { loggedInUser, loading } = useContext(AuthContext);
+
+  // function ifTeacher(){
+  //   if (loggedInUser){
+  //     if(loggedInUser.user.role==="TEACHER"){
+  //       setIsTeacher(true)
+  //     }
+  //   }
+  // }
 
   useEffect(() => {
     async function fetchUser() {
@@ -55,6 +47,29 @@ export function NavBar() {
     fetchUser();
   }, []);
 
+
+  const user = {
+    name: userData.name,
+    email: userData.email,
+    imageUrl: userData.img,
+  };
+
+  // IS TEACHER?????
+  const navigation = [
+    { name: "Home", href: "/", current: true, hide: false},
+    { name: "Practice", href: "/practice", current: false, hide: false},
+    { name: "Profile", href: "/profile", current: false, hide: !loggedInUser},
+    { name: "My Classes", href: "/order/my-orders", current: false, hide: !loggedInUser},
+    { name: "Our Teachers", href: "/our-teachers", current: false, hide: false},
+    { name: "Create class", href: "/practice/create", current: false, hide: !loggedInUser.user.role},
+  ];
+
+  // const userNavigation = [
+  //   { name: "Your Profile", href: "#" },
+  //   { name: "Settings", href: "#" },
+  //   { name: "Sign out", href: "#" },
+  // ];
+
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
@@ -63,14 +78,7 @@ export function NavBar() {
 
   return (
     <>
-      {/*
-        This example requires updating your template:
 
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-white-800">
           {({ open }) => (
@@ -87,11 +95,19 @@ export function NavBar() {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
+                      {/* <span>Home</span>
+                      <span>Practice</span>
+                      <span>Profile</span>
+                      <span>My Classes</span>
+                      <span>Our Teacher</span>
+                      { role === "TEACHER" && <span>Crate class</span>} */}
+
                         {navigation.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
                             className={classNames(
+                              item.hide ? "hidden" : 
                               item.current
                                 ? "bg-gray-900 text-white"
                                 : "text-gray-300 hover:bg-gray-700 hover:text-white",

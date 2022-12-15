@@ -10,18 +10,18 @@ export function ModifyProfile() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    infos: {
-      about: "",
-      country: "",
-      age: "",
-      img: "https://res.cloudinary.com/dvvtr5bi2/image/upload/v1670969231/user_icon_lwaqnq.png",
+    about: "",
+    country: "",
+    age: "",
+    img: "https://res.cloudinary.com/dvvtr5bi2/image/upload/v1670969231/user_icon_lwaqnq.png",
     coverPhoto:
       "https://res.cloudinary.com/dvvtr5bi2/image/upload/v1670981627/kike-vega-F2qh3yjz6Jk-unsplash_gi5znx.jpg",
-}});
+    photos: [],
+  });
   console.log(form);
 
   // deconstruir img?
-//   const { img } = form
+  //   const { img } = form
 
   // DO I NEED LOGGED IN USER? CONTEXT???
   useEffect(() => {
@@ -32,7 +32,6 @@ export function ModifyProfile() {
         delete response.data._id;
 
         setForm(response.data);
-
       } catch (err) {
         console.log(err);
       }
@@ -48,11 +47,9 @@ export function ModifyProfile() {
   const [coverPhoto, setCoverPhoto] = useState("");
   const [img, setImg] = useState("");
 
-
   function handleCoverPhoto(e) {
     setCoverPhoto(e.target.files[0]);
   }
-
 
   function handleImg(e) {
     setImg(e.target.files[0]);
@@ -77,7 +74,6 @@ export function ModifyProfile() {
       const dataForUpload = new FormData();
 
       dataForUpload.append("picture", coverPhoto);
-      
 
       const response = await api.post("/upload-image", dataForUpload);
 
@@ -92,7 +88,6 @@ export function ModifyProfile() {
       const dataForUpload = new FormData();
 
       dataForUpload.append("picture", img);
-      
 
       const response = await api.post("/upload-image", dataForUpload);
 
@@ -110,8 +105,14 @@ export function ModifyProfile() {
 
       const imgURL = await handleUploadImg();
 
-      await api.patch("/profile/settings", { ...form, [form.infos.img]: imgURL });
-      await api.patch("/profile/settings", { ...form, [form.infos.coverPhoto]: coverPhotoURL });
+      await api.patch("/profile/settings", {
+        ...form,
+        [form.infos.img]: imgURL,
+      });
+      await api.patch("/profile/settings", {
+        ...form,
+        [form.infos.coverPhoto]: coverPhotoURL,
+      });
 
       navigate("/profile");
     } catch (err) {
@@ -128,11 +129,11 @@ export function ModifyProfile() {
         handleImg={handleImg}
         name={form.name}
         email={form.email}
-        about={form.infos.about}
-        county={form.infos.country}
-        age={form.infos.age}
-        img={form.infos.img}
-        coverPhoto={form.infos.coverPhoto}
+        about={form.about}
+        county={form.country}
+        age={form.age}
+        img={form.img}
+        coverPhoto={form.coverPhoto}
       />
     </>
   );

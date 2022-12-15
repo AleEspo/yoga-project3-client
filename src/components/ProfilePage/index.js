@@ -13,9 +13,11 @@ export function ProfilePage(props) {
     {
       name: "Students",
       description:
-        `${props.student.length}`,
+        `${props.students}`,
     },
   ];
+
+  console.log(props.students)
   
 
   return (
@@ -32,7 +34,7 @@ export function ProfilePage(props) {
 
           <img
             src={props.img}
-            class="mx-32 rounded-full mt-56 w-32 z-10 shadow-lg"
+            className="mx-32 rounded-full mt-56 w-32 z-10 shadow-lg"
             alt="Avatar"
           />
 

@@ -15,6 +15,7 @@ import { NavBar} from "./components/NavBar";
 import { OurTeachers } from "./pages/OurTeachers";
 import { YourStudents } from "./pages/YourStudents";
 import { ModifyProfile } from "./pages/ModifyProfile";
+import { ProfilePage } from "./components/ProfilePage";
 
 
 function App() {

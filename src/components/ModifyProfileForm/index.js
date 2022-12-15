@@ -4,7 +4,6 @@ export function ModifyProfileForm(props) {
   const [previewImg, setPreviewImg] = useState(props.img);
   const [previewCoverPhoto, setPreviewCoverPhoto] = useState(props.coverPhoto);
 
-
   return (
     <>
       <div>
@@ -69,7 +68,7 @@ export function ModifyProfileForm(props) {
                       <input
                         onChange={props.handleChange}
                         type="number"
-                        name="infos.age"
+                        name="age"
                         id="infos"
                         value={props.age}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -130,20 +129,34 @@ export function ModifyProfileForm(props) {
                     </label>
                     <div className="mt-1 flex items-center">
                       <span className="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
-                        <svg
+                        <div
                           className="h-full w-full text-gray-300"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
+                          <img src={previewImg} />
+                          {/* <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" /> */}
+                        </div>
                       </span>
-                      <button
-                        type="button"
-                        className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                      >
-                        Change
-                      </button>
+                      <label htmlFor="img">
+                        <input
+                          id="img"
+                          name="img"
+                          type="file"
+                          className="sr-only"
+                          onChange={(e) => {
+                            const url = URL.createObjectURL(e.target.files[0]);
+                            setPreviewImg(url);
+                            props.handleImg(e);
+                          }}
+                        />
+                        <span
+                          type="button"
+                          className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                          Change
+                        </span>
+                      </label>
                     </div>
                   </div>
 
@@ -186,7 +199,7 @@ export function ModifyProfileForm(props) {
                                 props.handleCoverPhoto(e);
                               }}
                             />
-                            <img src={previewCoverPhoto} />
+                            <div><img src={previewCoverPhoto} /></div>
                           </label>
                           <p className="pl-1">or drag and drop</p>
                         </div>

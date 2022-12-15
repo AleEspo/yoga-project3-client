@@ -99,7 +99,7 @@ export function Home() {
               </div>
 
               <div className="mb-6 md:mb-0">
-                <h3 className="text-2xl font-bold mb-3">Follow your teacher</h3>
+                <h3 className="text-2xl font-bold mb-3">Book your practices</h3>
                 <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
                     className="w-4 h-4 mr-2"
@@ -152,7 +152,7 @@ export function Home() {
 
               <div className="mb-6 md:mb-0 md:order-1">
                 <h3 className="text-2xl font-bold mb-3">
-                  Never forget a class
+                  Track your progress
                 </h3>
                 <div className="mb-3 text-blue-600 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
@@ -205,7 +205,7 @@ export function Home() {
               </div>
 
               <div className="mb-6 md:mb-0">
-                <h3 className="text-2xl font-bold mb-3">Track your progress</h3>
+                <h3 className="text-2xl font-bold mb-3">Never forget a class</h3>
                 <div className="mb-3 text-yellow-500 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
                     className="w-4 h-4 mr-2"

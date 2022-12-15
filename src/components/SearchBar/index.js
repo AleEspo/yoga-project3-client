@@ -15,11 +15,11 @@ export function SearchBar(props) {
 
   return (
     <>
-      <div class="flex justify-center">
-  <div class="mb-3 xl:w-96">
+      <div className="flex justify-center">
+  <div className="mb-3 xl:w-96">
     <input
       type="search"
-      class="
+      className="
         form-control
         block
         w-full
