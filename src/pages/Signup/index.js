@@ -9,8 +9,11 @@ export function SignUp() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    role: "USER",
     password: "",
   });
+
+  console.log(form)
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,9 +25,10 @@ export function SignUp() {
     try {
       await api.post("/user/signup", form);
 
+      console.log(form)
       //toast?
 
-      navigate("/login");
+      // navigate("/login");
     } catch (err) {
       console.log(err);
     }

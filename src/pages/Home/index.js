@@ -39,7 +39,7 @@ export function Home() {
           className="p-12 text-center relative overflow-hidden bg-no-repeat bg-cover"
           style={{
             backgroundImage:
-              "url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp')",
+              "url('https://res.cloudinary.com/dvvtr5bi2/image/upload/v1671114086/Banner_cortado_yvjs3h.png')",
             height: "400px",
           }}
         >
@@ -85,7 +85,7 @@ export function Home() {
                   data-mdb-ripple-color="light"
                 >
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/city/018.jpg"
+                    src="https://res.cloudinary.com/dvvtr5bi2/image/upload/v1671114318/Foto_1_xqcvzj.png"
                     className="w-full"
                     alt="Louvre"
                   />
@@ -100,7 +100,7 @@ export function Home() {
 
               <div className="mb-6 md:mb-0">
                 <h3 className="text-2xl font-bold mb-3">Book your practices</h3>
-                <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
+                {/* <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
                     className="w-4 h-4 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
@@ -112,19 +112,24 @@ export function Home() {
                     />
                   </svg>
                   Travels
-                </div>
-                <p className="text-gray-500 mb-6">
+                </div> */}
+                {/* <p className="text-gray-500 mb-6">
                   <small>
                     Published <u>13.01.2022</u> by
                     <a href="#!" className="text-gray-900">
                       Anna Maria Doe
                     </a>
                   </small>
-                </p>
+                </p> */}
                 <p className="text-gray-500">
-                  Ut pretium ultricies dignissim. Sed sit amet mi eget urna
-                  placerat vulputate. Ut vulputate est non quam dignissim
-                  elementum. Donec a ullamcorper diam.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
                 </p>
               </div>
             </div>
@@ -137,7 +142,7 @@ export function Home() {
                   data-mdb-ripple-color="light"
                 >
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/city/032.jpg"
+                    src="https://res.cloudinary.com/dvvtr5bi2/image/upload/v1671114459/Foto_2_laeoym.png"
                     className="w-full"
                     alt="Louvre"
                   />
@@ -151,10 +156,8 @@ export function Home() {
               </div>
 
               <div className="mb-6 md:mb-0 md:order-1">
-                <h3 className="text-2xl font-bold mb-3">
-                  Track your progress
-                </h3>
-                <div className="mb-3 text-blue-600 font-medium text-sm flex items-center justify-center md:justify-start">
+                <h3 className="text-2xl font-bold mb-3">Track your progress</h3>
+                {/* <div className="mb-3 text-blue-600 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
                     className="w-4 h-4 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
@@ -166,19 +169,24 @@ export function Home() {
                     />
                   </svg>
                   Art
-                </div>
-                <p className="text-gray-500 mb-6">
+                </div> */}
+                {/* <p className="text-gray-500 mb-6">
                   <small>
                     Published <u>12.01.2022</u> by
                     <a href="#!" className="text-gray-900">
                       Halley Frank
                     </a>
                   </small>
-                </p>
+                </p> */}
                 <p className="text-gray-500">
-                  Suspendisse in volutpat massa. Nulla facilisi. Sed aliquet
-                  diam orci, nec ornare metus semper sed. Integer volutpat
-                  ornare erat sit amet rutrum.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
                 </p>
               </div>
             </div>
@@ -191,7 +199,7 @@ export function Home() {
                   data-mdb-ripple-color="light"
                 >
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/city/059.jpg"
+                    src="https://res.cloudinary.com/dvvtr5bi2/image/upload/v1671114460/Foto_3_d8e23g.png"
                     className="w-full"
                     alt="Louvre"
                   />
@@ -205,8 +213,10 @@ export function Home() {
               </div>
 
               <div className="mb-6 md:mb-0">
-                <h3 className="text-2xl font-bold mb-3">Never forget a class</h3>
-                <div className="mb-3 text-yellow-500 font-medium text-sm flex items-center justify-center md:justify-start">
+                <h3 className="text-2xl font-bold mb-3">
+                  Never forget a class
+                </h3>
+                {/* <div className="mb-3 text-yellow-500 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
                     className="w-4 h-4 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
@@ -218,19 +228,24 @@ export function Home() {
                     />
                   </svg>
                   Business
-                </div>
-                <p className="text-gray-500 mb-6">
+                </div> */}
+                {/* <p className="text-gray-500 mb-6">
                   <small>
                     Published <u>10.01.2022</u> by
                     <a href="#!" className="text-gray-900">
                       Joe Svan
                     </a>
                   </small>
-                </p>
+                </p> */}
                 <p className="text-gray-500">
-                  Curabitur tristique, mi a mollis sagittis, metus felis mattis
-                  arcu, non vehicula nisl dui quis diam. Mauris ut risus eget
-                  massa volutpat feugiat. Donec.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
                 </p>
               </div>
             </div>
@@ -259,7 +274,7 @@ export function Home() {
                       data-mdb-ripple-color="light"
                     >
                       <img
-                        src="https://mdbootstrap.com/img/new/standard/city/018.jpg"
+                        src={currentPractice.img}
                         className="w-full"
                         alt="Louvre"
                       />

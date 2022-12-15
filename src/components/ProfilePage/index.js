@@ -18,7 +18,12 @@ export function ProfilePage(props) {
   ];
 
   console.log(props.students)
-  
+  console.log(props.practices)
+  console.log(props.photo1)
+  console.log(props.photo2)
+  console.log(props.photo3)
+  console.log(props.photo4)
+
 
   return (
     <div className="bg-white">
@@ -27,7 +32,7 @@ export function ProfilePage(props) {
         <div
           className="p-12 text-center relative overflow-hidden bg-no-repeat bg-cover"
           style={{
-            backgroundImage:`${props.coverPhoto}`,
+            backgroundImage:`url("${props.coverPhoto}")`,
             height: "400px",
           }}
         >

@@ -11,6 +11,8 @@ export function Profile() {
 
   const { setLoggedInUser } = useContext(AuthContext);
 
+  console.log(userData)
+
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -38,7 +40,22 @@ export function Profile() {
 
   return (
     <>
-    <ProfilePage/>
+      <ProfilePage
+        email={userData.email}
+        country={userData.country}
+        role={userData.role}
+        students={userData.students}
+        classes={userData.classes}
+        coverPhoto={userData.coverPhoto}
+        img={userData.img}
+        name={userData.name}
+        about={userData.about}
+        description={userData.description}
+        photo1={userData.otherPhotos[0]}
+        photo2={userData.otherPhotos[1]}
+        photo3={userData.otherPhotos[2]}
+        photo4={userData.otherPhotos[3]}
+      />
     </>
   );
 }

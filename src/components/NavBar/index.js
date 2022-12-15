@@ -14,19 +14,19 @@ export function NavBar() {
 
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
-  // const [isTeacher, setIsTeacher] = useState(false)
+  const [isTeacher, setIsTeacher] = useState(false)
   
 
   const { setLoggedInUser } = useContext(AuthContext);
   const { loggedInUser, loading } = useContext(AuthContext);
 
-  // function ifTeacher(){
-  //   if (loggedInUser){
-  //     if(loggedInUser.user.role==="TEACHER"){
-  //       setIsTeacher(true)
-  //     }
-  //   }
-  // }
+  function ifTeacher(){
+    if (loggedInUser){
+      if(loggedInUser.user.role==="TEACHER"){
+        setIsTeacher(true)
+      }
+    }
+  }
 
   useEffect(() => {
     async function fetchUser() {
@@ -61,7 +61,7 @@ export function NavBar() {
     { name: "Profile", href: "/profile", current: false, hide: !loggedInUser},
     { name: "My Classes", href: "/order/my-orders", current: false, hide: !loggedInUser},
     { name: "Our Teachers", href: "/our-teachers", current: false, hide: false},
-    { name: "Create class", href: "/practice/create", current: false, hide: !loggedInUser.user.role},
+    { name: "Create class", href: "/practice/create", current: false, hide: isTeacher} //!loggedInUser.user.role}??
   ];
 
   // const userNavigation = [

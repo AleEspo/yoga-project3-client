@@ -43,23 +43,6 @@ export function ModifyProfileForm(props) {
 
                     <div className="col-span-6 sm:col-span-4">
                       <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Email address
-                      </label>
-                      <input
-                        onChange={props.handleChange}
-                        type="text"
-                        name="email"
-                        id="email"
-                        value={props.email}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-
-                    <div className="col-span-6 sm:col-span-4">
-                      <label
                         htmlFor="infos[age]"
                         className="block text-sm font-medium text-gray-700"
                       >
@@ -134,7 +117,7 @@ export function ModifyProfileForm(props) {
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <img src={previewImg} />
+                          <img src={previewImg} value={previewImg}/>
                           {/* <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" /> */}
                         </div>
                       </span>
@@ -215,7 +198,7 @@ export function ModifyProfileForm(props) {
                 <button
                   type="submit"
                   className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  onClick={props.handleSubmit}
+                  onClick={(e)=>{props.handleSubmit(e)}}
                 >
                   Save
                 </button>

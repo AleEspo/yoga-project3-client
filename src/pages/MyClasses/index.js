@@ -12,6 +12,7 @@ export function MyOrders() {
   const { loggedInUser } = useContext(AuthContext);
   console.log(loggedInUser);
 
+
   // o setOrder não muda os ordens em tempo pra renderizar a div
   useEffect(() => {
     async function fetchOrders() {
@@ -19,12 +20,18 @@ export function MyOrders() {
         const response = await api.get("/order/my-orders");
 
         setOrders(response.data);
+        filterActiveOrders()
       } catch (err) {
         console.log(err);
       }
     }
     fetchOrders();
   }, []);
+
+  // filtered active only
+  const filterActiveOrders = orders && orders.filter(function (currentOrder) {
+    return !currentOrder.status.includes("Cancelled");
+  });
 
   useEffect(() => {
     async function fetchTeacherPractices() {
@@ -48,16 +55,23 @@ export function MyOrders() {
     }
   }
 
-
   async function cancelBooking(practiceId) {
     try {
-      const response = await api.patch(`/update-status/:orderId${practiceId}`);
+      const response = await api.patch(`/order/update-status/${practiceId}`);
 
       console.log(response);
     } catch (err) {
       console.log(err);
     }
   }
+
+
+  console.log(orders);
+  console.log(filterActiveOrders);
+
+  // RENDER ONLY "ACTIVE" ORDERS
+  // console.log(orders.filter(
+  //   (currentOrder) => !currentOrder.status.includes("Cancelled")))
 
   return (
     <>
@@ -71,8 +85,8 @@ export function MyOrders() {
           </h4>
 
           {loggedInUser.user.role === "USER" ? (
-            orders ? (
-              orders.map((currentPractice) => {
+            filterActiveOrders ? (
+              filterActiveOrders.map((currentPractice) => {
                 console.log(currentPractice);
                 return (
                   <div
@@ -86,7 +100,7 @@ export function MyOrders() {
                         data-mdb-ripple-color="light"
                       >
                         <img
-                          src="https://mdbootstrap.com/img/new/standard/city/018.jpg"
+                          src={currentPractice.practice.img}
                           className="w-full"
                           alt="Louvre"
                         />
@@ -103,7 +117,7 @@ export function MyOrders() {
 
                     <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-6 md:mb-0 mr-auto">
                       <h5 className="text-lg font-bold mb-3">
-                        {currentPractice.name} {currentPractice._id}
+                        {currentPractice.practice.name} {currentPractice._id}
                       </h5>
                       <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
                         <svg
@@ -130,12 +144,12 @@ export function MyOrders() {
                         {currentPractice.description}
                       </p>
                       <button
-                      onClick={()=>{
-                        cancelBooking(currentPractice._id)
-                      }}
+                        onClick={() => {
+                          cancelBooking(currentPractice._id);
+                        }}
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
-                        className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        className="mt-6 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                       >
                         Cancel booking
                       </button>
@@ -160,7 +174,7 @@ export function MyOrders() {
                       data-mdb-ripple-color="light"
                     >
                       <img
-                        src="https://mdbootstrap.com/img/new/standard/city/018.jpg"
+                        src={currentPractice.img}
                         className="w-full"
                         alt="Louvre"
                       />
@@ -209,7 +223,7 @@ export function MyOrders() {
                       }}
                       data-mdb-ripple="true"
                       data-mdb-ripple-color="light"
-                      className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      className="mt-6 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                     >
                       Cancel class
                     </button>
@@ -219,8 +233,8 @@ export function MyOrders() {
             })
           ) : (
             <h5>
-              You haven't created any class yet. Go to create practice to create
-              your first one!
+              You haven't created any class yet. Click on create practice to
+              create your first one!
             </h5>
           )}
         </section>

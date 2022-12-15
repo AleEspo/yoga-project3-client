@@ -9,13 +9,12 @@ export function ModifyProfile() {
 
   const [form, setForm] = useState({
     name: "",
-    email: "",
     about: "",
     country: "",
     age: "",
-    img: "https://res.cloudinary.com/dvvtr5bi2/image/upload/v1670969231/user_icon_lwaqnq.png",
+    img: "",
     coverPhoto:
-      "https://res.cloudinary.com/dvvtr5bi2/image/upload/v1670981627/kike-vega-F2qh3yjz6Jk-unsplash_gi5znx.jpg",
+      "",
     photos: [],
   });
   console.log(form);
@@ -51,6 +50,7 @@ export function ModifyProfile() {
     setCoverPhoto(e.target.files[0]);
   }
 
+
   function handleImg(e) {
     setImg(e.target.files[0]);
   }
@@ -77,6 +77,7 @@ export function ModifyProfile() {
 
       const response = await api.post("/upload-image", dataForUpload);
 
+      console.log(response.data.url)
       return response.data.url;
     } catch (err) {
       console.log(err);
@@ -105,16 +106,15 @@ export function ModifyProfile() {
 
       const imgURL = await handleUploadImg();
 
-      await api.patch("/profile/settings", {
+      await api.put("/user/settings", {
         ...form,
-        [form.infos.img]: imgURL,
-      });
-      await api.patch("/profile/settings", {
-        ...form,
-        [form.infos.coverPhoto]: coverPhotoURL,
+        [form.img]: imgURL,
+        [form.coverPhoto]: coverPhotoURL,
       });
 
-      navigate("/profile");
+      console.log(form)
+
+      // navigate("/profile");
     } catch (err) {
       console.log(err);
     }

@@ -115,6 +115,28 @@ export default function CreatePracticeForm(props) {
                     </div>
                   </div>
 
+                  <div className="grid grid-cols-3 gap-6">
+                    <div className="col-span-3 sm:col-span-2">
+                      <label
+                        htmlFor="input-placesLeft"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Places
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="placesLeft"
+                          id="input-placesLeft"
+                          className="block w-full flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          placeholder="ex: 10"
+                          required
+                          onChange={props.handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   {/* change format */}
                   <div className="flex items-center justify-center">
                     <div className="datepicker relative form-floating mb-3 xl:w-96">
