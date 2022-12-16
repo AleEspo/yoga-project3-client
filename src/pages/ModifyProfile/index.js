@@ -87,6 +87,7 @@ export function ModifyProfile() {
     try {
       const dataForUpload = new FormData();
 
+      // FILE, no picture? Assistir gravação
       dataForUpload.append("picture", img);
 
       const response = await api.post("/upload-image", dataForUpload);
@@ -107,12 +108,14 @@ export function ModifyProfile() {
 
       const imgURL = await handleUploadImg();
 
-      await api.put("/user/settings", {
+      await api.post("/user/settings", {
         ...form,
-        [form.img]: imgURL,
-        [form.coverPhoto]: coverPhotoURL,
+        img: imgURL,
+        coverPhoto: coverPhotoURL,
       });
 
+      // [form.img: imgURL] ??
+      
       console.log(form)
 
       // navigate("/profile");
