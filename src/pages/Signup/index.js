@@ -25,7 +25,6 @@ export function SignUp() {
     try {
       await api.post("/user/signup", form);
 
-      console.log(form)
       //toast?
 
       navigate("/login");
