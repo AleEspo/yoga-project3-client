@@ -11,12 +11,15 @@ export function Profile() {
 
   const { setLoggedInUser } = useContext(AuthContext);
 
-  console.log(userData)
+  console.log(`this is user data: ${userData}`)
 
   useEffect(() => {
     async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
+
+        delete response.data._id;
+
         setUserData(response.data);
       } catch (err) {
         console.log(err);

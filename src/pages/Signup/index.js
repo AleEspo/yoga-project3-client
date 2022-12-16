@@ -28,7 +28,7 @@ export function SignUp() {
       console.log(form)
       //toast?
 
-      // navigate("/login");
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }

@@ -15,15 +15,17 @@ export function ModifyProfile() {
     img: "",
     coverPhoto:
       "",
-    photos: [],
+    otherPhotos: [],
   });;
+
+  console.log(form)
 
   // deconstruir img?
   //   const { img } = form
 
   // DO I NEED LOGGED IN USER? CONTEXT???
   useEffect(() => {
-    async function fetchUserData() {
+    async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
 
@@ -32,12 +34,17 @@ export function ModifyProfile() {
         setForm(response.data);
       } catch (err) {
         console.log(err);
+
+        //se o token for expirado, vamos cancelalo
+        if (err.response.status === 401) {
+          localStorage.removeItem("loggedInUser");
+          navigate("/");
+        }
       }
     }
 
-    fetchUserData();
+    fetchUser();
   }, []);
-
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
