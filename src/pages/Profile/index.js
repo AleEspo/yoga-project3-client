@@ -53,11 +53,11 @@ export function Profile() {
         img={userData.img}
         name={userData.name}
         about={userData.about}
-        description={userData.description}
-        photo1={userData.otherPhotos[0]}
-        photo2={userData.otherPhotos[1]}
-        photo3={userData.otherPhotos[2]}
-        photo4={userData.otherPhotos[3]}
+        // description={userData.description}
+        // photo1={userData.otherPhotos[0]}
+        // photo2={userData.otherPhotos[1]}
+        // photo3={userData.otherPhotos[2]}
+        // photo4={userData.otherPhotos[3]}
       />
     </>
   );

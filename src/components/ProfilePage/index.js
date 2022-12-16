@@ -57,44 +57,28 @@ export function ProfilePage(props) {
             ))}
           </dl>
         </div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+        {/* <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
           <img
-            src={
-              !props.photo1
-                ? "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg"
-                : props.photo1
-            }
+            src={props.photo1}
             alt="Yoga pic 1"
             className="rounded-lg bg-gray-100"
           />
           <img
-            src={
-              !props.photo2
-                ? "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
-                : props.photo2
-            }
+            src={props.photo2}
             alt="Yoga pic 2"
             className="rounded-lg bg-gray-100"
           />
           <img
-            src={
-              !props.photo3
-                ? "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
-                : props.photo3
-            }
+            src={props.photo3}
             alt="Yoga pic 3"
             className="rounded-lg bg-gray-100"
           />
           <img
-            src={
-              !props.photo4
-                ? "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
-                : props.photo4
-            }
+            src={props.photo4}
             alt="Yoga pic 4"
             className="rounded-lg bg-gray-100"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
