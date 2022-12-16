@@ -16,8 +16,7 @@ export function ModifyProfile() {
     coverPhoto:
       "",
     photos: [],
-  });
-  console.log(form);
+  });;
 
   // deconstruir img?
   //   const { img } = form
@@ -92,6 +91,8 @@ export function ModifyProfile() {
 
       const response = await api.post("/upload-image", dataForUpload);
 
+      console.log(dataForUpload)
+      console.log(response.data.url)
       return response.data.url;
     } catch (err) {
       console.log(err);
@@ -119,6 +120,9 @@ export function ModifyProfile() {
       console.log(err);
     }
   }
+
+  console.log(`Img is: ${img}`)
+
 
   return (
     <>

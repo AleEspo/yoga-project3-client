@@ -20,7 +20,7 @@ export function ModifyProfileForm(props) {
             </div>
           </div>
           <div className="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST">
+            <form action="#" method="POST" onSubmit={(e)=>{props.handleSubmit(e)}}>
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
@@ -129,6 +129,8 @@ export function ModifyProfileForm(props) {
                           className="sr-only"
                           onChange={(e) => {
                             const url = URL.createObjectURL(e.target.files[0]);
+                            console.log(url)
+                            console.log(e.target.files[0])
                             setPreviewImg(url);
                             props.handleImg(e);
                           }}
@@ -198,7 +200,6 @@ export function ModifyProfileForm(props) {
                 <button
                   type="submit"
                   className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  onClick={(e)=>{props.handleSubmit(e)}}
                 >
                   Save
                 </button>

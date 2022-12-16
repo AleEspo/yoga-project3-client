@@ -11,22 +11,11 @@ function classNames(...classes) {
 }
 
 export function NavBar() {
-
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
-  const [isTeacher, setIsTeacher] = useState(false)
-  
 
   const { setLoggedInUser } = useContext(AuthContext);
   const { loggedInUser, loading } = useContext(AuthContext);
-
-  function ifTeacher(){
-    if (loggedInUser){
-      if(loggedInUser.user.role==="TEACHER"){
-        setIsTeacher(true)
-      }
-    }
-  }
 
   useEffect(() => {
     async function fetchUser() {
@@ -47,28 +36,60 @@ export function NavBar() {
     fetchUser();
   }, []);
 
-
   const user = {
     name: userData.name,
     email: userData.email,
     imageUrl: userData.img,
+    role: userData.role,
   };
 
   // IS TEACHER?????
   const navigation = [
-    { name: "Home", href: "/", current: true, hide: false},
-    { name: "Practice", href: "/practice", current: false, hide: false},
-    { name: "Profile", href: "/profile", current: false, hide: !loggedInUser},
-    { name: "My Classes", href: "/order/my-orders", current: false, hide: !loggedInUser},
-    { name: "Our Teachers", href: "/our-teachers", current: false, hide: false},
-    { name: "Create class", href: "/practice/create", current: false, hide: isTeacher} //!loggedInUser.user.role}??
+    { name: "Home", href: "/", current: true, hide: false },
+    { name: "Practice", href: "/practice", current: false, hide: false },
+    { name: "Profile", href: "/profile", current: false, hide: !loggedInUser },
+    {
+      name: "My Classes",
+      href: "/order/my-orders",
+      current: false,
+      hide: !loggedInUser,
+    },
+    {
+      name: "Our Teachers",
+      href: "/our-teachers",
+      current: false,
+      hide: false,
+    },
+    {
+      name: "Create class",
+      href: "/practice/create",
+      current: false,
+      hide: user.role === "TEACHER" ? false : true,
+    },
   ];
 
-  // const userNavigation = [
-  //   { name: "Your Profile", href: "#" },
-  //   { name: "Settings", href: "#" },
-  //   { name: "Sign out", href: "#" },
-  // ];
+  const location = window.location.pathname;
+
+  useEffect(() => {
+    // for (let i = 0; i<navigation.length; i++){
+    //   if (navigation[i].href===location){
+    //     navigation[i].current = true
+    //   } else {
+    //     navigation[i].current = false
+    //   }
+    // }
+
+    navigation.map((currentLocation) => {
+      if (currentLocation.href === location) {
+        return currentLocation.current === true;
+      } else {
+        return currentLocation.current === false;
+      }
+    });
+  }, [location]);
+
+  console.log(location);
+  console.log(navigation);
 
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
@@ -76,9 +97,10 @@ export function NavBar() {
     navigate("/");
   }
 
+  // REALOAD NAVBAR WHEN setLoggedInUser CHANGES?
+
   return (
     <>
-
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-white-800">
           {({ open }) => (
@@ -95,25 +117,20 @@ export function NavBar() {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-                      {/* <span>Home</span>
-                      <span>Practice</span>
-                      <span>Profile</span>
-                      <span>My Classes</span>
-                      <span>Our Teacher</span>
-                      { role === "TEACHER" && <span>Crate class</span>} */}
 
                         {navigation.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
                             className={classNames(
-                              item.hide ? "hidden" : 
-                              item.current
-                                ? "bg-gray-900 text-white"
+                              item.hide === true
+                                ? "hidden"
+                                // : item.current
+                                // ? "bg-gray-900 text-white"
                                 : "text-gray-300 hover:bg-gray-700 hover:text-white",
                               "px-3 py-2 rounded-md text-sm font-medium"
                             )}
-                            aria-current={item.current ? "page" : undefined}
+                            // aria-current={item.current ? "page" : undefined}
                           >
                             {item.name}
                           </a>
