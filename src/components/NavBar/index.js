@@ -15,7 +15,9 @@ export function NavBar() {
   const [userData, setUserData] = useState({});
 
   const { setLoggedInUser } = useContext(AuthContext);
-  const { loggedInUser, loading } = useContext(AuthContext);
+  const { loggedInUser, loading, token } = useContext(AuthContext);
+
+  console.log(loggedInUser)
 
   useEffect(() => {
     async function fetchUser() {
@@ -64,7 +66,7 @@ export function NavBar() {
       name: "Create class",
       href: "/practice/create",
       current: false,
-      hide: user.role === "TEACHER" ? false : true,
+      hide: (loggedInUser && user.role === "TEACHER") ? false : true,
     },
   ];
 
@@ -86,7 +88,9 @@ export function NavBar() {
         return currentLocation.current === false;
       }
     });
-  }, [location]);
+    console.log(loggedInUser)
+    console.log(navigation)
+  }, [loggedInUser]);
 
   console.log(location);
   console.log(navigation);
