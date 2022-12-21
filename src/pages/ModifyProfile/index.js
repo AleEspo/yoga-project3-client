@@ -6,6 +6,9 @@ import { AuthContext } from "../../context/authContext";
 
 export function ModifyProfile() {
   const navigate = useNavigate();
+  
+  const { loggedInUser } = useContext(AuthContext);
+  console.log(loggedInUser);
 
   const [form, setForm] = useState({
     name: "",
@@ -45,6 +48,7 @@ export function ModifyProfile() {
 
     fetchUser();
   }, []);
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -115,7 +119,7 @@ export function ModifyProfile() {
 
       const imgURL = await handleUploadImg();
 
-      await api.post("/user/settings", {
+      await api.post("/user/update", {
         ...form,
         img: imgURL,
         coverPhoto: coverPhotoURL,
