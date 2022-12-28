@@ -40,7 +40,6 @@ export function Practice() {
 
   async function handleCreateOrder(practiceId, practicePrice) {
     try {
-      console.log("oi");
       const response = await api.post("/order", {
         price: practicePrice,
         practice: practiceId,
@@ -75,7 +74,7 @@ Type something in the searchbar and book your next Yoga Class.</h4>
             <div className="my-24 grid lg:grid-cols-3 gap-6 xl:gap-x-12">
               {filteredPractices.map((currentPractice) => {
                 return (
-                  <div className="mb-6 lg:mb-0">
+                  <div className="mb-6 lg:mb-0" key={currentPractice._id}>
                     <div className="relative block bg-white rounded-lg shadow-lg">
                       <div className="flex">
                         <div
@@ -104,7 +103,7 @@ Type something in the searchbar and book your next Yoga Class.</h4>
                           <small>
                             Published <u>{currentPractice.createdAt}</u> by
                             <div className="text-gray-900">
-                              {currentPractice.teacher}
+                              {currentPractice.teacher.name}
                             </div>
                           </small>
                         </p>

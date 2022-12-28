@@ -87,7 +87,6 @@ export function MyOrders() {
           {loggedInUser.user.role === "USER" ? (
             filterActiveOrders ? (
               filterActiveOrders.map((currentPractice) => {
-                console.log(currentPractice);
                 return (
                   <div
                     className="flex flex-wrap mb-6"
@@ -117,7 +116,7 @@ export function MyOrders() {
 
                     <div className="grow-0 shrink-0 basis-auto w-full md:w-9/12 xl:w-7/12 px-3 mb-6 md:mb-0 mr-auto">
                       <h5 className="text-lg font-bold mb-3">
-                        {currentPractice.practice.name} {currentPractice._id}
+                        {currentPractice.practice.name}
                       </h5>
                       <div className="mb-3 text-red-600 font-medium text-sm flex items-center justify-center md:justify-start">
                         <svg
@@ -136,7 +135,7 @@ export function MyOrders() {
                         <small>
                           Published <u>{currentPractice.createdAt}</u> by
                           <a href="#!" className="text-gray-900">
-                            {currentPractice.teacher}
+                            {currentPractice.teacher.name}
                           </a>
                         </small>
                       </p>
@@ -210,7 +209,7 @@ export function MyOrders() {
                       <small>
                         Published <u>{currentPractice.createdAt}</u> by
                         <a href="#!" className="text-gray-900">
-                          {currentPractice.teacher}
+                          {currentPractice.teacher.name}
                         </a>
                       </small>
                     </p>

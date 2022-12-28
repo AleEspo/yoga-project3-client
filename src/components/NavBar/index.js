@@ -17,12 +17,13 @@ export function NavBar() {
   const { setLoggedInUser } = useContext(AuthContext);
   const { loggedInUser, loading, token } = useContext(AuthContext);
 
-  console.log(loggedInUser)
+  console.log(loggedInUser);
 
   useEffect(() => {
     async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
+        console.log(response.data);
         setUserData(response.data);
       } catch (err) {
         console.log(err);
@@ -38,14 +39,16 @@ export function NavBar() {
     fetchUser();
   }, []);
 
+  console.log(loggedInUser);
+
   const user = {
     name: userData.name,
     email: userData.email,
     imageUrl: userData.img,
     role: userData.role,
+    token: userData.token ? userData.token : "",
   };
 
-  // IS TEACHER?????
   const navigation = [
     { name: "Home", href: "/", current: true, hide: false },
     { name: "Practice", href: "/practice", current: false, hide: false },
@@ -66,9 +69,18 @@ export function NavBar() {
       name: "Create class",
       href: "/practice/create",
       current: false,
-      hide: (loggedInUser && user.role === "TEACHER") ? false : true,
+      // try with conditional ? => return hide property
+      hide: (loggedInUser !== null && loggedInUser.user.role !== "TEACHER") ? true : false,
     },
   ];
+
+  console.log(navigation[5]);
+
+  // useEffect(() => {
+  //   navigation[5].hide = user.role === "TEACHER" ? false : true;
+  // }, []);
+
+  // console.log(loggedInUser.user.role);
 
   const location = window.location.pathname;
 
@@ -88,9 +100,7 @@ export function NavBar() {
         return currentLocation.current === false;
       }
     });
-    console.log(loggedInUser)
-    console.log(navigation)
-  }, [loggedInUser]);
+  }, [location]);
 
   console.log(location);
   console.log(navigation);
@@ -121,7 +131,6 @@ export function NavBar() {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-
                         {navigation.map((item) => (
                           <a
                             key={item.name}
@@ -129,9 +138,9 @@ export function NavBar() {
                             className={classNames(
                               item.hide === true
                                 ? "hidden"
-                                // : item.current
-                                // ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                : // : item.current
+                                  // ? "bg-gray-900 text-white"
+                                  "text-gray-300 hover:bg-gray-700 hover:text-white",
                               "px-3 py-2 rounded-md text-sm font-medium"
                             )}
                             // aria-current={item.current ? "page" : undefined}

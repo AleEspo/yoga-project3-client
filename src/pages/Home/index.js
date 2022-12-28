@@ -310,7 +310,7 @@ export function Home() {
                       <small>
                         Published <u>{currentPractice.createdAt}</u> by
                         <a href="#!" className="text-gray-900">
-                          {currentPractice.teacher}
+                          {currentPractice.teacher.name}
                         </a>
                       </small>
                     </p>
