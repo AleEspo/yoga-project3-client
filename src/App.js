@@ -15,7 +15,9 @@ import { NavBar} from "./components/NavBar";
 import { OurTeachers } from "./pages/OurTeachers";
 import { YourStudents } from "./pages/YourStudents";
 import { ModifyProfile } from "./pages/ModifyProfile";
-import { ProfilePage } from "./components/ProfilePage";
+// import { ProfilePage } from "./components/ProfilePage";
+import { ContactUs } from "./pages/ContactUs";
+import { ForgotPassoword } from "./pages/ForgotPassword";
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
           <Route path="/our-teachers" element={<OurTeachers/>}/>
           <Route path="/your-students" element={<YourStudents/>}/>
           <Route path="/profile/settings" element={<ModifyProfile/>}/>
+          <Route path="/contact-us" element={<ContactUs/>}/>
+          <Route path="/forgot-password" element={<ForgotPassoword/>}/>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthContextComponent>

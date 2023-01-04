@@ -4,7 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -17,7 +17,7 @@ export function NavBar() {
   const { setLoggedInUser } = useContext(AuthContext);
   const { loggedInUser, loading, token } = useContext(AuthContext);
 
-  console.log(loggedInUser);
+  const location = window.location.pathname;
 
   useEffect(() => {
     async function fetchUser() {
@@ -30,8 +30,10 @@ export function NavBar() {
 
         //se o token for expirado, vamos cancelalo
         if (err.response.status === 401) {
+          if (location !== "/forgot-password")
           localStorage.removeItem("loggedInUser");
-          navigate("/");
+          // PROBLEM WITH FORGOT PASSWORD PAGE
+          // navigate("/");
         }
       }
     }
@@ -40,6 +42,7 @@ export function NavBar() {
   }, []);
 
   console.log(loggedInUser);
+
 
   const user = {
     name: userData.name,
@@ -81,8 +84,6 @@ export function NavBar() {
   // }, []);
 
   // console.log(loggedInUser.user.role);
-
-  const location = window.location.pathname;
 
   useEffect(() => {
     // for (let i = 0; i<navigation.length; i++){

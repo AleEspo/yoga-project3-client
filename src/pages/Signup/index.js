@@ -13,8 +13,6 @@ export function SignUp() {
     password: "",
   });
 
-  console.log(form)
-
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
