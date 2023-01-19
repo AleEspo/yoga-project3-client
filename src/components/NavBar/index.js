@@ -77,7 +77,7 @@ export function NavBar() {
     },
   ];
 
-  console.log(navigation[5]);
+  // console.log(navigation[5]);
 
   // useEffect(() => {
   //   navigation[5].hide = user.role === "TEACHER" ? false : true;
@@ -103,8 +103,8 @@ export function NavBar() {
     });
   }, [location]);
 
-  console.log(location);
-  console.log(navigation);
+  // console.log(location);
+  // console.log(navigation);
 
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
