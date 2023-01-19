@@ -14,8 +14,7 @@ export function NavBar() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
 
-  const { setLoggedInUser } = useContext(AuthContext);
-  const { loggedInUser, loading, token } = useContext(AuthContext);
+  const { setLoggedInUser, loggedInUser  } = useContext(AuthContext);
 
   const location = window.location.pathname;
 
@@ -41,7 +40,6 @@ export function NavBar() {
     fetchUser();
   }, []);
 
-  console.log(loggedInUser);
 
 
   const user = {
@@ -73,7 +71,7 @@ export function NavBar() {
       href: "/practice/create",
       current: false,
       // try with conditional ? => return hide property
-      hide: (loggedInUser !== null && loggedInUser.user.role !== "TEACHER") ? true : false,
+      hide: (loggedInUser !== null && loggedInUser.user.role === "TEACHER") ? false : true,
     },
   ];
 
@@ -109,7 +107,6 @@ export function NavBar() {
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
-    // setContext(null) ?
     navigate("/");
   }
 
