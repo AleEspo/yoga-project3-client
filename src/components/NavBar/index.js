@@ -109,6 +109,7 @@ export function NavBar() {
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
+    // setContext(null) ?
     navigate("/");
   }
 
