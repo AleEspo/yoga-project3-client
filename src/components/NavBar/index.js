@@ -5,6 +5,7 @@ import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { api } from "../../api/api";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -108,6 +109,9 @@ export function NavBar() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
     navigate("/");
+    toast('You are now logged out', {
+      icon: '❗️',
+    });
   }
 
   // REALOAD NAVBAR WHEN setLoggedInUser CHANGES?
