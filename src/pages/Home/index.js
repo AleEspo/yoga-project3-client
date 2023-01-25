@@ -72,7 +72,7 @@ export function Home() {
         {/* <!-- Container for demo purpose --> */}
         <div className="container my-24 px-6 mx-auto">
           {/* <!-- Section: Design Block --> */}
-          <section className="mb-32 text-gray-800 text-center md:text-left mx-12">
+          <section className="mb-32 text-gray-800 text-center md:text-left mx-12 lg:mx-48">
             <h2 className="text-3xl font-bold mb-12 text-center">
               Who does it work?
             </h2>
