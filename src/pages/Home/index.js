@@ -308,7 +308,7 @@ export function Home() {
                     </div>
                     <p className="text-gray-500 mb-6">
                       <small>
-                        Published <u>{currentPractice.createdAt}</u> by
+                        Published <u>{currentPractice.createdAt}</u> by 
                         <a href="#!" className="text-gray-900">
                           {currentPractice.teacher.name}
                         </a>
