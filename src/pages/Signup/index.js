@@ -32,7 +32,7 @@ export function SignUp() {
   }
 
   return (
-    <SignUpForm loginLink="/login" handleChange={handleChange} handleSubmit={handleSubmit}/>
+    <SignUpForm loginLink="/login" handleChange={handleChange} handleSubmit={handleSubmit} />
     // <>
     //   <h1>Sign Up</h1>
     //   <form onSubmit={handleSubmit}>

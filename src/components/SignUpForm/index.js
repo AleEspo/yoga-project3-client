@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import {basic_eye} from 'react-icons-kit/linea/basic_eye'
-import {basic_eye_closed} from 'react-icons-kit/linea/basic_eye_closed'
+import Icon from "react-icons-kit";
+import { basic_eye } from 'react-icons-kit/linea/basic_eye'
+import { basic_eye_closed } from 'react-icons-kit/linea/basic_eye_closed'
 
 
 // Add password and email validation
 export function SignUpForm(props) {
+  const [type, setType] = useState("password");
+
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -99,15 +102,24 @@ export function SignUpForm(props) {
                             Password
                           </label>
                           <input
-                            type="password"
+                            type={type}
                             name="password"
                             id="password"
                             // pattern={
                             //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
                             // }
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
                             onChange={props.handleChange}
                           />
+                          {type === "password" ? (
+                            <span className='icon-span' onClick={() => setType("text")}>
+                              <Icon icon={basic_eye_closed} size={18} />
+                            </span>
+                          ) : (
+                            <span className='icon-span' onClick={() => setType("password")}>
+                              <Icon icon={basic_eye} size={18} />
+                            </span>
+                          )};
 
                           <p className="mt-2 text-sm text-gray-500">
                             Your password must include at leas eight characters,
