@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export function MyOrders() {
   const [orders, setOrders] = useState();
-  const [practice, setPractice] = useState([]);
+  // const [practice, setPractice] = useState([]); -> DELETE ?
   const [teacherPractice, setTeacherPractice] = useState([]);
 
   const navigate = useNavigate();
@@ -13,14 +13,14 @@ export function MyOrders() {
   console.log(loggedInUser);
 
 
-  // o setOrder não muda os ordens em tempo pra renderizar a div
+  // setOrder doesn't fetch orders in time to render the div
   useEffect(() => {
     async function fetchOrders() {
       try {
         const response = await api.get("/order/my-orders");
 
         setOrders(response.data);
-        filterActiveOrders()
+        // filterActiveOrders()
       } catch (err) {
         console.log(err);
       }
@@ -28,10 +28,11 @@ export function MyOrders() {
     fetchOrders();
   }, []);
 
-  // filtered active only
+  // filter active orders only
   const filterActiveOrders = orders && orders.filter(function (currentOrder) {
     return !currentOrder.status.includes("Cancelled");
   });
+
 
   useEffect(() => {
     async function fetchTeacherPractices() {
@@ -45,6 +46,12 @@ export function MyOrders() {
     fetchTeacherPractices();
   }, []);
 
+    // filter active practices only
+    const filterActivePractices = teacherPractice && teacherPractice.filter(function (currentOrder) {
+      return !currentOrder.status.includes("Cancelled");
+    });
+
+  // for teachers
   async function cancelClass(practiceId) {
     try {
       const response = await api.delete(`/practice/${practiceId}`);
@@ -55,6 +62,7 @@ export function MyOrders() {
     }
   }
 
+  // for students
   async function cancelBooking(practiceId) {
     try {
       const response = await api.patch(`/order/update-status/${practiceId}`);
@@ -68,10 +76,6 @@ export function MyOrders() {
 
   console.log(orders);
   console.log(filterActiveOrders);
-
-  // RENDER ONLY "ACTIVE" ORDERS
-  // console.log(orders.filter(
-  //   (currentOrder) => !currentOrder.status.includes("Cancelled")))
 
   return (
     <>
@@ -162,8 +166,8 @@ export function MyOrders() {
                 first one!
               </h5>
             )
-          ) : teacherPractice ? (
-            teacherPractice.map((currentPractice) => {
+          ) : filterActivePractices ? (
+            filterActivePractices.map((currentPractice) => {
               return (
                 <div className="flex flex-wrap mb-6">
                   <div className="grow-0 shrink-0 basis-auto w-full md:w-3/12 px-3 mb-6 md:mb-0 ml-auto">

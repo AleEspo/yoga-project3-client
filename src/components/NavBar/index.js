@@ -109,9 +109,9 @@ export function NavBar() {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
     navigate("/");
-    toast('You are now logged out', {
-      icon: '❗️',
-    });
+    // toast('You are now logged out', {
+    //   icon: '❗️',
+    // });
   }
 
   // REALOAD NAVBAR WHEN setLoggedInUser CHANGES?

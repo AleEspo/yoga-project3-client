@@ -1,3 +1,9 @@
+import { useState } from 'react';
+import {basic_eye} from 'react-icons-kit/linea/basic_eye'
+import {basic_eye_closed} from 'react-icons-kit/linea/basic_eye_closed'
+
+
+// Add password and email validation
 export function SignUpForm(props) {
   return (
     <>
