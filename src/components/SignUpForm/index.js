@@ -17,7 +17,7 @@ export function SignUpForm(props) {
   const [specialValidated, setSpecialValidated] = useState(false);
   const [lengthValidated, setLengthValidated] = useState(false);
 
-  const handleChange = (value) => {
+  const handleValue = (value) => {
     const lower = new RegExp('(?=.*[a-z])');
     const upper = new RegExp('(?=.*[A-Z])');
     const number = new RegExp('(?=.*[0-9])');
@@ -166,12 +166,15 @@ export function SignUpForm(props) {
                             //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
                             // }
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
-                            onChange={props.handleChange, (e) => handleChange(e.target.value)}
+                            onChange={(e) => {
+                              handleValue(e.target.value);
+                              props.handleChange(e);
+                            }}
                           />
 
                           {/* validation tracker */}
                           <div className='tracker-box'>
-                            <div className={lowerValidated ? "validated" : "not-validated"}>
+                            <div className={lowerValidated ? "text-white/25" : "text-white"}>
                               {lowerValidated ? (
                                 <span className='list-icon green'>
                                   <Icon icon={arrows_circle_check} />
