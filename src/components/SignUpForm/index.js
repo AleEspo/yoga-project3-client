@@ -148,30 +148,30 @@ export function SignUpForm(props) {
                           >
                             Password
                           </label>
-
-                          {type === "password" ? (
-                            <span className='icon-span absolute' onClick={() => setType("text")}>
-                              <Icon icon={basic_eye_closed} size={18} />
-                            </span>
-                          ) : (
-                            <span className='icon-span absolute' onClick={() => setType("password")}>
-                              <Icon icon={basic_eye} size={18} />
-                            </span>
-                          )}
-                          <input
-                            type={type}
-                            name="password"
-                            id="password"
-                            // pattern={
-                            //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
-                            // }
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
-                            onChange={(e) => {
-                              handleValue(e.target.value);
-                              props.handleChange(e);
-                            }}
-                          />
-
+                          <div className='relative'>
+                            {type === "password" ? (
+                              <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("text")}>
+                                <Icon icon={basic_eye_closed} size={18} />
+                              </span>
+                            ) : (
+                              <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("password")}>
+                                <Icon icon={basic_eye} size={18} />
+                              </span>
+                            )}
+                            <input
+                              type={type}
+                              name="password"
+                              id="password"
+                              // pattern={
+                              //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
+                              // }
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
+                              onChange={(e) => {
+                                handleValue(e.target.value);
+                                props.handleChange(e);
+                              }}
+                            />
+                          </div>
                           {/* validation tracker */}
                           <div className='tracker-box'>
                             <div className={lowerValidated ? "text-white/25" : "text-white"}>
