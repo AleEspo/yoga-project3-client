@@ -149,6 +149,7 @@ export function SignUpForm(props) {
                             Password
                           </label>
                           <div className='relative'>
+                            {/* absolute spans above an input are included in the input field */}
                             {type === "password" ? (
                               <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("text")}>
                                 <Icon icon={basic_eye_closed} size={18} />
@@ -173,62 +174,62 @@ export function SignUpForm(props) {
                             />
                           </div>
                           {/* validation tracker */}
-                          <div className='tracker-box'>
-                            <div className={lowerValidated ? "text-white/25" : "text-white"}>
+                          <div className='bg-indigo-600 text-sm text-white tracking-widest p-4 rounded-md mt-1'>
+                            <div className={lowerValidated ? "text-white/25 my-1" : "text-white my-1"}>
                               {lowerValidated ? (
-                                <span className='list-icon green'>
+                                <span className='mr-2 text-green-400'>
                                   <Icon icon={arrows_circle_check} />
                                 </span>
                               ) : (
-                                <span className='list-icon'>
+                                <span className='mr-2'>
                                   <Icon icon={basic_exclamation} />
                                 </span>
                               )}
                               At least one lowercase letter
                             </div>
-                            <div className={upperValidated ? "validated" : "not-validated"}>
+                            <div className={upperValidated ? "text-white/25 my-1" : "text-white my-1"}>
                               {upperValidated ? (
-                                <span className='list-icon green'>
+                                <span className='mr-2 text-green-400'>
                                   <Icon icon={arrows_circle_check} />
                                 </span>
                               ) : (
-                                <span className='list-icon'>
+                                <span className='mr-2'>
                                   <Icon icon={basic_exclamation} />
                                 </span>
                               )}
                               At least one uppercase letter
                             </div>
-                            <div className={numberValidated ? "validated" : "not-validated"}>
+                            <div className={numberValidated ? "text-white/25 my-1" : "text-white my-1"}>
                               {numberValidated ? (
-                                <span className='list-icon green'>
+                                <span className='mr-2 text-green-400'>
                                   <Icon icon={arrows_circle_check} />
                                 </span>
                               ) : (
-                                <span className='list-icon'>
+                                <span className='mr-2'>
                                   <Icon icon={basic_exclamation} />
                                 </span>
                               )}
                               At least one number
                             </div>
-                            <div className={specialValidated ? "validated" : "not-validated"}>
+                            <div className={specialValidated ? "text-white/25 my-1" : "text-white my-1"}>
                               {specialValidated ? (
-                                <span className='list-icon green'>
+                                <span className='mr-2 text-green-400'>
                                   <Icon icon={arrows_circle_check} />
                                 </span>
                               ) : (
-                                <span className='list-icon'>
+                                <span className='mr-2'>
                                   <Icon icon={basic_exclamation} />
                                 </span>
                               )}
                               At least one special character
                             </div>
-                            <div className={lengthValidated ? "validated" : "not-validated"}>
+                            <div className={lengthValidated ? "text-white/25 my-1" : "text-white my-1"}>
                               {lengthValidated ? (
-                                <span className='list-icon green'>
+                                <span className='mr-2 text-green-400'>
                                   <Icon icon={arrows_circle_check} />
                                 </span>
                               ) : (
-                                <span className='list-icon'>
+                                <span className='mr-2'>
                                   <Icon icon={basic_exclamation} />
                                 </span>
                               )}
