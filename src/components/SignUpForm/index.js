@@ -1,10 +1,60 @@
 import { useState } from 'react';
-import {basic_eye} from 'react-icons-kit/linea/basic_eye'
-import {basic_eye_closed} from 'react-icons-kit/linea/basic_eye_closed'
+import Icon from "react-icons-kit";
+import { basic_eye } from 'react-icons-kit/linea/basic_eye';
+import { basic_eye_closed } from 'react-icons-kit/linea/basic_eye_closed';
+import { basic_exclamation } from 'react-icons-kit/linea/basic_exclamation';
+import { arrows_circle_check } from 'react-icons-kit/linea/arrows_circle_check';
+
 
 
 // Add password and email validation
 export function SignUpForm(props) {
+  const [type, setType] = useState("password");
+  // validations states
+  const [lowerValidated, setLowerValidated] = useState(false);
+  const [upperValidated, setUpperValidated] = useState(false);
+  const [numberValidated, setNumberValidated] = useState(false);
+  const [specialValidated, setSpecialValidated] = useState(false);
+  const [lengthValidated, setLengthValidated] = useState(false);
+
+  const handleValue = (value) => {
+    const lower = new RegExp('(?=.*[a-z])');
+    const upper = new RegExp('(?=.*[A-Z])');
+    const number = new RegExp('(?=.*[0-9])');
+    const special = new RegExp('(?=.*[!@#\$%\^&\*])');
+    const length = new RegExp('(?=.{8,})')
+    if (lower.test(value)) {
+      setLowerValidated(true);
+    }
+    else {
+      setLowerValidated(false);
+    }
+    if (upper.test(value)) {
+      setUpperValidated(true);
+    }
+    else {
+      setUpperValidated(false);
+    }
+    if (number.test(value)) {
+      setNumberValidated(true);
+    }
+    else {
+      setNumberValidated(false);
+    }
+    if (special.test(value)) {
+      setSpecialValidated(true);
+    }
+    else {
+      setSpecialValidated(false);
+    }
+    if (length.test(value)) {
+      setLengthValidated(true);
+    }
+    else {
+      setLengthValidated(false);
+    }
+  }
+
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -98,16 +148,94 @@ export function SignUpForm(props) {
                           >
                             Password
                           </label>
-                          <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            // pattern={
-                            //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
-                            // }
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                            onChange={props.handleChange}
-                          />
+                          <div className='relative'>
+                            {/* absolute spans above an input are included in the input field */}
+                            {type === "password" ? (
+                              <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("text")}>
+                                <Icon icon={basic_eye_closed} size={18} />
+                              </span>
+                            ) : (
+                              <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("password")}>
+                                <Icon icon={basic_eye} size={18} />
+                              </span>
+                            )}
+                            <input
+                              type={type}
+                              name="password"
+                              id="password"
+                              // pattern={
+                              //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
+                              // }
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
+                              onChange={(e) => {
+                                handleValue(e.target.value);
+                                props.handleChange(e);
+                              }}
+                            />
+                          </div>
+                          {/* validation tracker */}
+                          <div className='bg-indigo-600 text-sm text-white tracking-widest p-4 rounded-md mt-1'>
+                            <div className={lowerValidated ? "text-white/25 my-1" : "text-white my-1"}>
+                              {lowerValidated ? (
+                                <span className='mr-2 text-green-400'>
+                                  <Icon icon={arrows_circle_check} />
+                                </span>
+                              ) : (
+                                <span className='mr-2'>
+                                  <Icon icon={basic_exclamation} />
+                                </span>
+                              )}
+                              At least one lowercase letter
+                            </div>
+                            <div className={upperValidated ? "text-white/25 my-1" : "text-white my-1"}>
+                              {upperValidated ? (
+                                <span className='mr-2 text-green-400'>
+                                  <Icon icon={arrows_circle_check} />
+                                </span>
+                              ) : (
+                                <span className='mr-2'>
+                                  <Icon icon={basic_exclamation} />
+                                </span>
+                              )}
+                              At least one uppercase letter
+                            </div>
+                            <div className={numberValidated ? "text-white/25 my-1" : "text-white my-1"}>
+                              {numberValidated ? (
+                                <span className='mr-2 text-green-400'>
+                                  <Icon icon={arrows_circle_check} />
+                                </span>
+                              ) : (
+                                <span className='mr-2'>
+                                  <Icon icon={basic_exclamation} />
+                                </span>
+                              )}
+                              At least one number
+                            </div>
+                            <div className={specialValidated ? "text-white/25 my-1" : "text-white my-1"}>
+                              {specialValidated ? (
+                                <span className='mr-2 text-green-400'>
+                                  <Icon icon={arrows_circle_check} />
+                                </span>
+                              ) : (
+                                <span className='mr-2'>
+                                  <Icon icon={basic_exclamation} />
+                                </span>
+                              )}
+                              At least one special character
+                            </div>
+                            <div className={lengthValidated ? "text-white/25 my-1" : "text-white my-1"}>
+                              {lengthValidated ? (
+                                <span className='mr-2 text-green-400'>
+                                  <Icon icon={arrows_circle_check} />
+                                </span>
+                              ) : (
+                                <span className='mr-2'>
+                                  <Icon icon={basic_exclamation} />
+                                </span>
+                              )}
+                              At least 8 characters
+                            </div>
+                          </div>
 
                           <p className="mt-2 text-sm text-gray-500">
                             Your password must include at leas eight characters,
