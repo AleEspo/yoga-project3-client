@@ -16,6 +16,17 @@ export function SignUpForm(props) {
   const [numberValidated, setNumberValidated] = useState(false);
   const [specialValidated, setSpecialValidated] = useState(false);
   const [lengthValidated, setLengthValidated] = useState(false);
+  const [firstPassword, setFirstPassword] = useState("");
+  const [confirmationMatch, setConfirmationMatch] = useState(false);
+  const [buttonConditions, setButtonConditions] = useState(false);
+
+  const checkConditions = () => {
+    lowerValidated && upperValidated && numberValidated && specialValidated && lengthValidated && confirmationMatch ? setButtonConditions(true) : setButtonConditions(false)
+  }
+
+  const checkConfirmation = (e) => {
+    firstPassword == e ? setConfirmationMatch(true) : setConfirmationMatch(false)
+  }
 
   const handleValue = (value) => {
     const lower = new RegExp('(?=.*[a-z])');
@@ -168,13 +179,47 @@ export function SignUpForm(props) {
                               // }
                               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
                               onChange={(e) => {
+                                setFirstPassword(e.target.value);
                                 handleValue(e.target.value);
+                                checkConditions(e);
                                 props.handleChange(e);
                               }}
                             />
                           </div>
+
+                          <label
+                            htmlFor="password"
+                            className="block text-sm font-medium text-gray-700 mt-4"
+                          >
+                            Confirm Password
+                          </label>
+                          <div className='relative'>
+                            {/* absolute spans above an input are included in the input field */}
+                            {type === "password" ? (
+                              <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("text")}>
+                                <Icon icon={basic_eye_closed} size={18} />
+                              </span>
+                            ) : (
+                              <span className='cursor-pointer absolute my-1 right-3' onClick={() => setType("password")}>
+                                <Icon icon={basic_eye} size={18} />
+                              </span>
+                            )}
+                            <input
+                              type={type}
+                              name="password"
+                              id="password"
+                              // pattern={
+                              //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
+                              // }
+                              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
+                              onChange={(e) => {
+                                checkConfirmation(e.target.value);
+                              }}
+                            />
+                          </div>
+
                           {/* validation tracker */}
-                          <div className='bg-indigo-600 text-sm text-white tracking-widest p-4 rounded-md mt-1'>
+                          <div className='bg-indigo-600 text-sm text-white tracking-widest p-4 rounded-md mt-3'>
                             <div className={lowerValidated ? "text-white/25 my-1" : "text-white my-1"}>
                               {lowerValidated ? (
                                 <span className='mr-2 text-green-400'>
@@ -242,7 +287,8 @@ export function SignUpForm(props) {
                     <div className="bg-gray-50 px-4 py-3 text-center sm:px-6">
                       <button
                         type="submit"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className={`inline-flex justify-center rounded-md border border-transparent ${buttonConditions ? "bg-indigo-600" : "bg-gray-400"} py-2 px-4 text-sm font-medium text-white shadow-sm ${buttonConditions ? "hover:bg-indigo-700" : "bg-gray-400"} focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+                        disabled={`${buttonConditions}`}
                       >
                         Create account!
                       </button>
@@ -259,7 +305,7 @@ export function SignUpForm(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }
