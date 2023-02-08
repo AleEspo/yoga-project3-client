@@ -236,12 +236,6 @@ export function SignUpForm(props) {
                               At least 8 characters
                             </div>
                           </div>
-
-                          <p className="mt-2 text-sm text-gray-500">
-                            Your password must include at leas eight characters,
-                            one uppercase letter, one lowercase letter, one
-                            number and one special character
-                          </p>
                         </div>
                       </div>
                     </div>
