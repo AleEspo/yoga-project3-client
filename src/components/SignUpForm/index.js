@@ -177,11 +177,17 @@ export function SignUpForm(props) {
                               // pattern={
                               //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
                               // }
+                              // Convert both values to a state and compare them throuhg the name
+                              // value={secondPassword}
                               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
                               onChange={(e) => {
+                                // TODO : set as a function
                                 setFirstPassword(e.target.value);
+                                // validation box
                                 handleValue(e.target.value);
+
                                 checkConditions(e);
+                                // send data to server
                                 props.handleChange(e);
                               }}
                             />
@@ -288,6 +294,7 @@ export function SignUpForm(props) {
                       <button
                         type="submit"
                         className={`inline-flex justify-center rounded-md border border-transparent ${buttonConditions ? "bg-indigo-600" : "bg-gray-400"} py-2 px-4 text-sm font-medium text-white shadow-sm ${buttonConditions ? "hover:bg-indigo-700" : "bg-gray-400"} focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+                        // TODO: props.buttonCondition
                         disabled={`${buttonConditions}`}
                       >
                         Create account!
