@@ -212,14 +212,14 @@ export function SignUpForm(props) {
                             )}
                             <input
                               type={type}
-                              name="password"
+                              name="password-confirmation"
                               id="password"
                               // pattern={
                               //   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm
                               // }
                               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm custom-input"
                               onChange={(e) => {
-                                checkConfirmation(e.target.value);
+                                props.handleChange(e);
                               }}
                             />
                           </div>

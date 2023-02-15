@@ -13,7 +13,7 @@ export function SignUp() {
     password: "",
   });
 
-  console.log(form)
+  const [submitButton, setSubmitButton] = useState(false)
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
