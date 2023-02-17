@@ -18,6 +18,7 @@ import { ModifyProfile } from "./pages/ModifyProfile";
 // import { ProfilePage } from "./components/ProfilePage";
 import { ContactUs } from "./pages/ContactUs";
 import { ForgotPassoword } from "./pages/ForgotPassword";
+import { EmailVerification } from "./pages/EmailVerification";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/profile/settings" element={<ModifyProfile/>}/>
           <Route path="/contact-us" element={<ContactUs/>}/>
           <Route path="/forgot-password" element={<ForgotPassoword/>}/>
+          <Route path="/email-verification" element={<EmailVerification/>}/>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthContextComponent>
