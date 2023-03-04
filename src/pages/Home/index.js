@@ -26,7 +26,6 @@ export function Home() {
     fetchPractices();
   }, []);
 
-
   return (
     <>
       <>
@@ -117,14 +116,16 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  Our platform is designed to make the booking process simple
+                  and stress-free. Simply browse our selection of classes and
+                  choose the one that best fits your needs. You can filter by
+                  location, time, and level of difficulty to find the perfect
+                  class for you. Once you have selected your class, you can
+                  easily book your spot and make your payment through our secure
+                  payment system. We offer both in-person and online classes, so
+                  you can choose the option that works best for you. Our
+                  platform allows you to easily manage your bookings, so you can
+                  quickly and easily change or cancel your class if you need to.
                 </p>
               </div>
             </div>
@@ -151,7 +152,9 @@ export function Home() {
               </div>
 
               <div className="mb-6 md:mb-0 md:order-1">
-                <h3 className="text-2xl font-bold mb-3">Track your progress</h3>
+                <h3 className="text-2xl font-bold mb-3">
+                  Connect with the community
+                </h3>
                 {/* <div className="mb-3 text-blue-600 font-medium text-sm flex items-center justify-center md:justify-start">
                   <svg
                     className="w-4 h-4 mr-2"
@@ -174,14 +177,15 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  Our platform is also a place for you to connect with other
+                  students and teachers who share your passion for yoga. Here,
+                  you can join groups, discuss different types of yoga, share
+                  tips and advice, and build relationships with like-minded
+                  people. Whether you're a beginner or an experienced yogi, Yoga
+                  Home is a great place to learn, grow, and connect. Our
+                  platform also offers features like messaging and commenting,
+                  so you can easily connect with others and get the support you
+                  need.
                 </p>
               </div>
             </div>
@@ -233,14 +237,16 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  We understand the importance of staying organized and keeping
+                  track of your classes. Our app comes equipped with
+                  notification reminders that can be customized to suit your
+                  needs. In addition to reminders, our app also provides
+                  progress tracking features. Our progress tracking features are
+                  designed to help you stay motivated and focused on your
+                  studies. With our app, you can also keep track of your
+                  teachers and fellow students. Our social networking features
+                  allow you to connect with other students and teachers in your
+                  classes, making it easy to stay in touch.
                 </p>
               </div>
             </div>
@@ -303,7 +309,7 @@ export function Home() {
                     </div>
                     <p className="text-gray-500 mb-6">
                       <small>
-                        Published <u>{currentPractice.createdAt}</u> by 
+                        Published <u>{currentPractice.createdAt}</u> by
                         <a href="#!" className="text-gray-900">
                           {currentPractice.teacher.name}
                         </a>
