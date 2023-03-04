@@ -116,7 +116,7 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  Our platform is designed to make the booking process simple
+                  We designed our platform to make the booking process simple
                   and stress-free. Simply browse our selection of classes and
                   choose the one that best fits your needs. You can filter by
                   location, time, and level of difficulty to find the perfect
@@ -177,7 +177,7 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  Our platform is also a place for you to connect with other
+                  Yoga Home is also a place for you to connect with other
                   students and teachers who share your passion for yoga. Here,
                   you can join groups, discuss different types of yoga, share
                   tips and advice, and build relationships with like-minded
