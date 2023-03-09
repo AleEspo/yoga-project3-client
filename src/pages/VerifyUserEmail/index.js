@@ -15,7 +15,7 @@ export function VerifyUserEmail() {
   async function verifyUniqueString(userId, uniqueString) {
     try {
       const response = await api.get(
-        "user/email-verification/:userId/:uniqueString",
+        `user/email-verification/${userId}/${uniqueString}`,
         {
           userId: userId,
           uniqueString: uniqueString,
@@ -45,7 +45,7 @@ export function VerifyUserEmail() {
     <>
       {verificationStatus ? (
         <h1>
-          `${verificationMessage}` You can now <Link href="/login">log in</Link>
+          `${verificationMessage}` You can now <Link to="/login">log in</Link>
         </h1>
       ) : (
         <h1>`${verificationMessage}`</h1>
