@@ -26,7 +26,7 @@ export function Home() {
     fetchPractices();
   }, []);
 
-  console.log(practice.data);
+  console.log(practice);
 
   return (
     <>
