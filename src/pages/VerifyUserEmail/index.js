@@ -25,14 +25,14 @@ export function VerifyUserEmail() {
       setVerificationMessage(JSON.stringify(response.data));
 
       console.log(response.data);
-      console.log(JSON.stringify(response.data));
-      console.log(JSON.stringify(response.data.json));
+      console.log(JSON.parse(response.data));
+      console.log(JSON.parse(response.data.json));
 
       if (response.data.status === "okay") {
         setVerificationStatus(true);
       }
     } catch (err) {
-      setVerificationMessage(JSON.stringify(err.data.json));
+      setVerificationMessage(JSON.parse(err.data.json));
       console.log(err);
     }
   }
