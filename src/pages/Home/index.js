@@ -267,7 +267,7 @@ export function Home() {
               Latest classes
             </h2>
 
-            {practice === 0 ? (
+            {(practice === []) ? (
               <div>No classes</div>
             ) : (
               practice.slice(0, 5).map((currentPractice) => {
