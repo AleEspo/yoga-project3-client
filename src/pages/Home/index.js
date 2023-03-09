@@ -18,9 +18,9 @@ export function Home() {
       try {
         const response = await api.get("/practice");
         setPractice(response.data);
+        console.log(practice);
       } catch (err) {
         console.log(err);
-        // aqui pode colocar TOAST
       }
     }
     fetchPractices();
