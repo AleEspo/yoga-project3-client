@@ -18,13 +18,15 @@ export function Home() {
       try {
         const response = await api.get("/practice");
         setPractice(response.data);
-        console.log(practice);
+        console.log(response.data)
       } catch (err) {
         console.log(err);
       }
     }
     fetchPractices();
   }, []);
+
+  console.log(practice.data);
 
   return (
     <>
