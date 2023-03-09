@@ -4,7 +4,6 @@ import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../../components/LoginForm";
 
-
 export function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -45,7 +44,11 @@ export function Login() {
 
   return (
     <>
-      <LoginForm handleChange={handleChange} handleSubmit={handleSubmit} signupLink={"/signup"}/>
+      <LoginForm
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        signupLink={"/signup"}
+      />
       {/* <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="input-email">E-mail:</label>
