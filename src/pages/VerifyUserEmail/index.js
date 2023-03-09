@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/api";
 
 export function VerifyUserEmail() {
-    
   let { userId } = useParams();
   let { uniqueString } = useParams();
 
@@ -23,10 +22,6 @@ export function VerifyUserEmail() {
       );
 
       setVerificationMessage(JSON.stringify(response.data));
-
-      console.log(response.data);
-      console.log(JSON.parse(response.data));
-      console.log(JSON.parse(response.data.json));
 
       if (response.data.status === "okay") {
         setVerificationStatus(true);
