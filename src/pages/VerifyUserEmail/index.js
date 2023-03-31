@@ -14,21 +14,22 @@ export function VerifyUserEmail() {
   async function verifyUniqueString(userId, uniqueString) {
     try {
       const response = await api.get(
-        `user/email-verification/${userId}/${uniqueString}`,
+        `http://localhost:4000/user/email-verification/${userId}/${uniqueString}`,
         {
           userId: userId,
           uniqueString: uniqueString,
         }
       );
 
-      setVerificationMessage(JSON.stringify(response.data));
-
-      if (response.data.status === "okay") {
+      setVerificationMessage(response.data.msg);
+      // console.dir(response.data)
+      if (response.statusText === "OK") {
         setVerificationStatus(true);
       }
     } catch (err) {
-      setVerificationMessage(JSON.parse(err.data.json));
-      console.log(err);
+      // Should we consider canceling the user and ask to sign up again?
+      setVerificationStatus(false);
+      setVerificationMessage(`Something went wrong.. ( Status Code ${err.response.status} ) Try to log in.`);
     }
   }
 
@@ -39,11 +40,14 @@ export function VerifyUserEmail() {
   return (
     <>
       {verificationStatus ? (
-        <h1>
-          `${verificationMessage}` You can now <Link to="/login">log in</Link>
+        <h1 className="ml-14 mt-12 text-lg text-indigo-500" >
+          {verificationMessage} You can now <Link to="/login">log in</Link>
         </h1>
       ) : (
-        <h1>`${verificationMessage}`</h1>
+        <div>
+          <h1 className="ml-14 mt-12 text-lg text-indigo-500" >{verificationStatus}</h1>
+          <h1 className="ml-14 mt-12 text-lg text-indigo-500" >{verificationMessage}</h1>
+        </div>
       )}
     </>
   );
