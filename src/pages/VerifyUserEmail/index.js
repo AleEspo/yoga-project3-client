@@ -41,12 +41,16 @@ export function VerifyUserEmail() {
     <>
       {verificationStatus ? (
         <h1 className="ml-14 mt-12 text-lg text-indigo-500" >
-          {verificationMessage} You can now <Link to="/login">log in</Link>
+          You can now <Link className="underline" to="/login">Log in</Link> to start at Yoga Home
         </h1>
       ) : (
         <div>
-          <h1 className="ml-14 mt-12 text-lg text-indigo-500" >{verificationStatus}</h1>
-          <h1 className="ml-14 mt-12 text-lg text-indigo-500" >{verificationMessage}</h1>
+          <h1 className="ml-14 mt-12 text-lg" >
+            You are already verified. <Link className="  text-indigo-500" to="/login">Log in</Link> to start at Yoga Home
+          </h1>
+          {/* Optional Data for Client Side Error Notification
+          <h1>{verificationStatus}</h1>
+          <h1>{verificationMessage}</h1> */}
         </div>
       )}
     </>
