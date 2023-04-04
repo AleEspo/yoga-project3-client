@@ -40,13 +40,13 @@ export function VerifyUserEmail() {
   return (
     <>
       {verificationStatus ? (
-        <h1 className="ml-14 mt-12 text-lg text-indigo-500" >
-          You can now <Link className="underline" to="/login">Log in</Link> to start at Yoga Home
+        <h1 className="ml-14 mt-12 text-lg" >
+          You can now <Link className="underline text-indigo-500" to="/login">Log in</Link> to start at Yoga Home
         </h1>
       ) : (
         <div>
           <h1 className="ml-14 mt-12 text-lg" >
-            You are already verified. <Link className="  text-indigo-500" to="/login">Log in</Link> to start at Yoga Home
+            You are already verified. <Link className="underline text-indigo-500" to="/login">Log in</Link> to start at Yoga Home
           </h1>
           {/* Optional Data for Client Side Error Notification
           <h1>{verificationStatus}</h1>
