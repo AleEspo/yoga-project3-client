@@ -65,14 +65,7 @@ export function NavBar() {
       href: "/our-teachers",
       current: false,
       hide: false,
-    },
-    {
-      name: "Create class",
-      href: "/practice/create",
-      current: false,
-      // try with conditional ? => return hide property
-      hide: (loggedInUser !== null && loggedInUser.user.role === "TEACHER") ? false : true,
-    },
+    }
   ];
 
   // console.log(navigation[5]);
