@@ -62,6 +62,7 @@ export function NavBar() {
     //   current: false,
     //   hide: !loggedInUser,
     // },
+
     {
       name: "Our Teachers",
       href: "/our-teachers",
@@ -75,6 +76,7 @@ export function NavBar() {
     //   // try with conditional ? => return hide property
     //   hide: (loggedInUser !== null && loggedInUser.user.role === "TEACHER") ? false : true,
     // },
+
   ];
 
   // console.log(navigation[5]);
@@ -208,14 +210,14 @@ export function NavBar() {
                                 
                                 {/* <Menu.Item key="Settings">
                                   {({ active }) => (
-                                    <Link to="/profile/settings">
+                                    <Link to="/profile">
                                       <div
                                         className={classNames(
                                           active ? "bg-gray-100" : "",
                                           "block px-4 py-2 text-sm text-gray-700"
                                         )}
                                       >
-                                        Edit profile
+                                        Profile
                                       </div>
                                     </Link>
                                   )}

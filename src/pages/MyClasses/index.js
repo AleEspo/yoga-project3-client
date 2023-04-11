@@ -72,6 +72,7 @@ export function MyOrders() {
     }
   }
 
+
   console.log(orders);
   console.log(filterActiveOrders);
 
@@ -193,6 +194,7 @@ export function MyOrders() {
                 {filterActiveOrders.map((currentPractice) => {
                   return (
                     <>
+
                       <div
                         className="flex flex-wrap mb-6"
                         key={currentPractice._id}
