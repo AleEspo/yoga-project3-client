@@ -73,6 +73,16 @@ export function MyOrders() {
     }
   }
 
+  const createClassButton = (user) => {
+    if (loggedInUser !== null && loggedInUser.user.role === "TEACHER") {
+       return (
+        <a class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 my-5 rounded"
+        href="/practice/create">
+          Create class
+        </a>
+       )
+    }
+  }
 
   console.log(orders);
   console.log(filterActiveOrders);
@@ -87,7 +97,7 @@ export function MyOrders() {
             Hello {loggedInUser.user.name}, here you can find your next classes
             coming up!
           </h4>
-
+          {createClassButton(loggedInUser)}
           {loggedInUser.user.role === "USER" ? (
             filterActiveOrders ? (
               filterActiveOrders.map((currentPractice) => {
