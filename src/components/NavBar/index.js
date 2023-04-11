@@ -52,20 +52,31 @@ export function NavBar() {
   };
 
   const navigation = [
+    // UX DESIGN test update
     { name: "Home", href: "/", current: true, hide: false },
     { name: "Practice", href: "/practice", current: false, hide: false },
-    {
-      name: "My Classes",
-      href: "/order/my-orders",
-      current: false,
-      hide: !loggedInUser,
-    },
+    // { name: "Profile", href: "/profile", current: false, hide: !loggedInUser },
+    // {
+    //   name: "My Classes",
+    //   href: "/order/my-orders",
+    //   current: false,
+    //   hide: !loggedInUser,
+    // },
+
     {
       name: "Our Teachers",
       href: "/our-teachers",
       current: false,
       hide: false,
-    }
+    },
+    // {
+    //   name: "Create class",
+    //   href: "/practice/create",
+    //   current: false,
+    //   // try with conditional ? => return hide property
+    //   hide: (loggedInUser !== null && loggedInUser.user.role === "TEACHER") ? false : true,
+    // },
+
   ];
 
   // console.log(navigation[5]);
@@ -181,7 +192,8 @@ export function NavBar() {
                               leaveTo="transform opacity-0 scale-95"
                             >
                               <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                <Menu.Item key="Settings">
+                                
+                              <Menu.Item key="Settings">
                                   {({ active }) => (
                                     <Link to="/profile">
                                       <div
@@ -191,6 +203,36 @@ export function NavBar() {
                                         )}
                                       >
                                         Profile
+                                      </div>
+                                    </Link>
+                                  )}
+                                </Menu.Item>
+                                
+                                {/* <Menu.Item key="Settings">
+                                  {({ active }) => (
+                                    <Link to="/profile">
+                                      <div
+                                        className={classNames(
+                                          active ? "bg-gray-100" : "",
+                                          "block px-4 py-2 text-sm text-gray-700"
+                                        )}
+                                      >
+                                        Profile
+                                      </div>
+                                    </Link>
+                                  )}
+                                </Menu.Item> */}
+
+                                <Menu.Item key="Settings">
+                                  {({ active }) => (
+                                    <Link to="/order/my-orders">
+                                      <div
+                                        className={classNames(
+                                          active ? "bg-gray-100" : "",
+                                          "block px-4 py-2 text-sm text-gray-700"
+                                        )}
+                                      >
+                                        My classes
                                       </div>
                                     </Link>
                                   )}
@@ -279,6 +321,7 @@ export function NavBar() {
                     </Disclosure.Button>
                   ))}
                 </div>
+
                 <div className="border-t border-gray-700 pt-4 pb-3">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
@@ -306,12 +349,23 @@ export function NavBar() {
                     </button> */}
                   </div>
                   <div className="mt-3 space-y-1 px-2">
+
                     <Disclosure.Button
-                      key="Settings"
+                      key="Profile"
+                      href="/profile"
                       as="a"
                       className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                     >
-                      Settings
+                      Profile
+                    </Disclosure.Button>
+
+                    <Disclosure.Button
+                      key="My classes"
+                      href="/order/my-orders"
+                      as="a"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    >
+                      My classes
                     </Disclosure.Button>
 
                     <Disclosure.Button
@@ -322,6 +376,7 @@ export function NavBar() {
                     >
                       Log Out
                     </Disclosure.Button>
+
                   </div>
                 </div>
               </Disclosure.Panel>
