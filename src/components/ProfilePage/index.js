@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function ProfilePage(props) {
   const features = [
     { name: "E-mail", description: `${props.email}` },
@@ -9,7 +11,7 @@ export function ProfilePage(props) {
     { name: "Role", description: `${props.role}` },
     { name: "Age", description: `${props.age}` },
     {
-      name: "Students",
+      name: "Students", //folllwing/followers? Students/teachers?
       description: `${props.students}`,
     },
   ];
@@ -44,6 +46,19 @@ export function ProfilePage(props) {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {props.name}
           </h2>
+
+          {/* TO IMPLEMENT conditional user logged in vs viewer */}
+          <Link to="/profile/settings">
+            <button
+              type="button"
+              className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+              data-mdb-ripple="true"
+              data-mdb-ripple-color="light"
+            >
+              Edit profile
+            </button>
+          </Link>
+
           <p className="mt-4 text-gray-500">{props.about}</p>
 
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
