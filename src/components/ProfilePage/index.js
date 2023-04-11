@@ -46,6 +46,10 @@ export function ProfilePage(props) {
           </h2>
           <p className="mt-4 text-gray-500">{props.about}</p>
 
+          <a class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 my-5 rounded"
+                  href="/profile/settings">
+            Edit
+          </a>
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
             {features.map((feature) => (
               <div key={feature.name} className="border-t border-gray-200 pt-4">
