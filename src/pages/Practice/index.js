@@ -29,6 +29,8 @@ export function Practice() {
     fetchPractices();
   }, []);
 
+  console.log(practice);
+
   // button for ADMIN + TEACHER on my order
   // async function handleDelete(practiceId) {
   //   try {
@@ -68,6 +70,7 @@ Here you can find a list of all Yoga classes available.
 Type something in the searchbar and book your next Yoga Class.</h4>
             <SearchBar
               filteredFunction={setFilteredPractices}
+              // provare a mandare stato con filteredPractice
               allPractices={practice}
               className="mb-40"
             />
@@ -130,7 +133,7 @@ Type something in the searchbar and book your next Yoga Class.</h4>
                             data-mdb-ripple-color="light"
                             className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                           >No Places Left
-                          </button>) 
+                          </button>)
                         ) : (
                           <Link to="/login">
                             <button
