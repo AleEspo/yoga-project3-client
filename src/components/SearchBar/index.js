@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import RangeSlider from "./RangeSlider.js"
 
 export function SearchBar(props) {
   const [timeValue, setTimeValue] = useState([0]);
@@ -38,9 +38,9 @@ export function SearchBar(props) {
 
   return (
     <>
-      <div className="flex justify-center">
-  <div className="mb-3 xl:w-96">
-    <input
+    <div className="flex justify-center">
+      <div className="mb-3 xl:w-96">
+      <input
       type="search"
       className="
         form-control
@@ -66,6 +66,9 @@ export function SearchBar(props) {
     <label for="time">{timeValue}</label>
     <input type="range" id="time" name="time"
          min="0" max="24" onChange={handleFilter}/>
+    <div className="flex bg-slate-200	flex-col gap-2 p-4">
+      <RangeSlider className="w-40 h-8" defaultValue={[25, 75]} />
+    </div>
   </div>
 </div>
     </>
