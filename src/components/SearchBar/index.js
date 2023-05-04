@@ -67,7 +67,7 @@ export function SearchBar(props) {
     <input type="range" id="time" name="time"
          min="0" max="24" onChange={handleFilter}/>
     <div className="flex flex-col gap-2 p-4">
-      <RangeSlider className="w-40 h-8" defaultValue={[25, 75]} />
+      <RangeSlider className="w-60 h-8" defaultValue={[6, 14]} min={0} max={24}/>
     </div>
   </div>
 </div>
