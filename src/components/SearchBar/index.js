@@ -14,28 +14,35 @@ export function SearchBar(props) {
         setTimeFrom(e[0]);
         setTimeTo(e[1]);
         props.filteredFunction((prevState) => {
-          return props.allPractices.filter((currentElement) => {
-            // console.log(currentElement.time); => "08:48"
-            const hour = parseInt(currentElement.time.split(":")[0]); // => 8
-            console.log(hour);
-            // if (timeFrom >= parseInt(hour) && parseInt(hour) <= timeTo){
-            return (hour >= timeFrom && hour <= timeTo)
-            // As a function?
-            // && currentElement.name
-            // .toLowerCase()
-            // .includes(e.target.value.toLowerCase());
-            // }
-          });
+          if(prevState.length > 0){
+            // prevState instead of props.allPractices
+            return prevState.filter((currentElement) => {
+              // console.log(currentElement.time); => "08:48"
+              const hour = parseInt(currentElement.time.split(":")[0]); // => 8
+              console.log(hour);
+              // if (timeFrom >= parseInt(hour) && parseInt(hour) <= timeTo){
+              return (hour >= timeFrom && hour <= timeTo)
+              // As a function?
+              // && currentElement.name
+              // .toLowerCase()
+              // .includes(e.target.value.toLowerCase());
+              // }
+            });
+          }
         });
       } else {
         // Filter by String
-        props.filteredFunction((prevState) => {
+        props.filteredFunction((prevState) => { // setFilteredPractices
           // Find a way to filter already filtered practices and not all of them
-          return props.allPractices.filter((currentElement) => {
-            return currentElement.name
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase());
-          });
+          console.log(prevState);
+          // prevState instead of props.allPractices
+          if(prevState.length > 0){
+            return prevState.filter((currentElement) => {
+              return currentElement.name
+              .toLowerCase()
+              .includes(e.target.value.toLowerCase());
+            });
+          }
         });
         if (e.target.value === "") {
           props.filteredFunction(props.allPractices);
