@@ -29,8 +29,6 @@ export function Practice() {
     fetchPractices();
   }, []);
 
-  console.log(practice);
-
   // button for ADMIN + TEACHER on my order
   // async function handleDelete(practiceId) {
   //   try {
@@ -102,6 +100,7 @@ Type something in the searchbar and book your next Yoga Class.</h4>
                       </div>
                       <div className="p-6">
                         <h5 className="font-bold text-lg mb-3">{currentPractice.name}</h5>
+                        <h5 className="font-bold text-lg mb-3">{currentPractice.time}</h5>
                         <p className="text-gray-500 mb-4">
                           <small>
                             Published <u>{currentPractice.createdAt}</u> by

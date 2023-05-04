@@ -2,39 +2,48 @@ import { useState } from "react";
 import RangeSlider from "./RangeSlider.js"
 
 export function SearchBar(props) {
-  const [timeValue, setTimeValue] = useState([0]);
-  // Filter past practices
+
+  const [timeFrom, setTimeFrom] = useState([0]);
+  const [timeTo, setTimeTo] = useState([24]);
+  console.log(timeFrom)
+  console.log(timeTo)
+    // Filter past practices
     function handleFilter(e) {
-      // console.dir(e.target.value);
-      switch (e.target.id) {
-        case "name":
-          props.filteredFunction((prevState) => {
-            // Find a way to filter already filtered practices and not all of them
-            return props.allPractices.filter((currentElement) => {
-              return currentElement.name
-              .toLowerCase()
-              .includes(e.target.value.toLowerCase());
-            });
+      if (Array.isArray(e)) {
+        // Filter by Time
+        setTimeFrom(e[0]);
+        setTimeTo(e[1]);
+        props.filteredFunction((prevState) => {
+          return prevState.filter((currentElement) => {
+            // console.log(currentElement.time); => "08:48"
+            const hour = parseInt(currentElement.time.split(":")[0]); // => 8
+            console.log(hour);
+            // if (timeFrom >= parseInt(hour) && parseInt(hour) <= timeTo){
+            return (hour >= timeFrom && hour <= timeTo)
+            // As a function?
+            // && currentElement.name
+            // .toLowerCase()
+            // .includes(e.target.value.toLowerCase());
+            // }
           });
-          break;
-          case "time":
-            setTimeValue(e.target.value);
-            props.filteredFunction((prevState) => {
-              return props.allPractices.filter((currentElement) => {
-                // console.log(currentElement.time);
-                return currentElement.time
-                .includes(e.target.value);
-              });
-            });
-          break;
-        default:
-          break;
+        });
+      } else {
+        // Filter by String
+        props.filteredFunction((prevState) => {
+          // Find a way to filter already filtered practices and not all of them
+          return prevState.filter((currentElement) => {
+            return currentElement.name
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase());
+          });
+        });
+        if (e.target.value === "") {
+          props.filteredFunction(props.allPractices);
+          return;
+        }
       }
-      if (e.target.value === "") {
-        props.filteredFunction(props.allPractices);
-        return;
-      }
-      }
+    }
+
 
   return (
     <>
@@ -63,11 +72,9 @@ export function SearchBar(props) {
       placeholder="ex: Morning Vinyasa Flow"
       onChange={handleFilter}
     />
-    <label for="time">{timeValue}</label>
-    <input type="range" id="time" name="time"
-         min="0" max="24" onChange={handleFilter}/>
+    <p className="text-left pt-5" >Set a timerange:</p>
     <div className="flex flex-col gap-2 p-4">
-      <RangeSlider className="w-60 h-8" defaultValue={[6, 14]} min={0} max={24}/>
+      <RangeSlider className="w-60 h-8" defaultValue={[0, 24]} min={0} max={24} onChange={handleFilter}/>
     </div>
   </div>
 </div>
