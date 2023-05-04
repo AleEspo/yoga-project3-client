@@ -14,7 +14,7 @@ export function SearchBar(props) {
         setTimeFrom(e[0]);
         setTimeTo(e[1]);
         props.filteredFunction((prevState) => {
-          return prevState.filter((currentElement) => {
+          return props.allPractices.filter((currentElement) => {
             // console.log(currentElement.time); => "08:48"
             const hour = parseInt(currentElement.time.split(":")[0]); // => 8
             console.log(hour);
@@ -31,7 +31,7 @@ export function SearchBar(props) {
         // Filter by String
         props.filteredFunction((prevState) => {
           // Find a way to filter already filtered practices and not all of them
-          return prevState.filter((currentElement) => {
+          return props.allPractices.filter((currentElement) => {
             return currentElement.name
             .toLowerCase()
             .includes(e.target.value.toLowerCase());
