@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { SearchBar } from "../../components/SearchBar";
+import { MultiSearchBar } from "../../components/MultiSearchBar";
 
 export function Practice() {
   const [practice, setPractice] = useState([]);
@@ -64,9 +64,10 @@ export function Practice() {
               Choose your practice
             </h2>
             <h4 className="font-semibold text-xl text-center mb-12">
-Here you can find a list of all Yoga classes available.
-Type something in the searchbar and book your next Yoga Class.</h4>
-            <SearchBar
+              Here you can find a list of all Yoga classes available.
+              Type something in the searchbar and book your next Yoga Class.
+            </h4>
+            <MultiSearchBar
               filteredFunction={setFilteredPractices}
               // provare a mandare stato con filteredPractice
               allPractices={practice}
