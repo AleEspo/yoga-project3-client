@@ -7,13 +7,17 @@ export function MultiSearchBar(props) {
   const [timeTo, setTimeTo] = useState([24]);
   const [searchQuery, setSearchQuery] = useState("")
 
+  console.log(timeFrom);
+  // console.log(timeTo);
+
   function crossFilters(from, to, query) {
     props.filteredFunction(() => {
         if( props.allPractices.length > 0 ){
           return props.allPractices.filter((practice) => {
             const hour = parseInt(practice.time.split(":")[0]);
+            console.log(hour)
             const name = practice.name.toLowerCase()
-            return (hour >= from && hour <= to && name.includes(query))
+            return (hour > from && hour < to && name.includes(query))
           });
         }
     });
