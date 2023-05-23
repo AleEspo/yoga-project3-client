@@ -70,7 +70,7 @@ export function Home() {
           {/* <!-- Section: Design Block --> */}
           <section className="mb-32 text-gray-800 text-center md:text-left mx-12 lg:mx-48">
             <h2 className="text-3xl font-bold mb-12 text-center">
-              Who does it work?
+              How does it work?
             </h2>
 
             <div className="grid md:grid-cols-2 gap-x-6 xl:gap-x-12 items-center mb-12">

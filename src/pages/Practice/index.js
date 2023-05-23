@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { SearchBar } from "../../components/SearchBarPractces";
+import { MultiSearchBar } from "../../components/MultiSearchBar";
 
 export function Practice() {
   const [practice, setPractice] = useState([]);
@@ -64,10 +64,12 @@ export function Practice() {
               Choose your practice
             </h2>
             <h4 className="font-semibold text-xl text-center mb-12">
-Here you can find a list of all the upcoming Yoga classes available.
-Type something in the searchbar and book your next Yoga Class.</h4>
-            <SearchBar
+              Here you can find a list of all Yoga classes available.
+              Type something in the searchbar and book your next Yoga Class.
+            </h4>
+            <MultiSearchBar
               filteredFunction={setFilteredPractices}
+              // provare a mandare stato con filteredPractice
               allPractices={practice}
               className="mb-40"
             />
@@ -99,6 +101,7 @@ Type something in the searchbar and book your next Yoga Class.</h4>
                       </div>
                       <div className="p-6">
                         <h5 className="font-bold text-lg mb-3">{currentPractice.name}</h5>
+                        <h5 className="font-bold text-lg mb-3">{currentPractice.time}</h5>
                         <p className="text-gray-500 mb-4">
                           <small>
                             Published <u>{currentPractice.createdAt}</u> by
@@ -130,7 +133,7 @@ Type something in the searchbar and book your next Yoga Class.</h4>
                             data-mdb-ripple-color="light"
                             className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                           >No Places Left
-                          </button>) 
+                          </button>)
                         ) : (
                           <Link to="/login">
                             <button
