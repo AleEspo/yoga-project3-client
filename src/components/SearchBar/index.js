@@ -1,5 +1,7 @@
 export function SearchBar(props) {
+  
     function handleFilter(e) {
+
         props.filteredFunction((prevState) => {
           return props.allPractices.filter((currentElement) => {
             return currentElement.name
@@ -7,6 +9,7 @@ export function SearchBar(props) {
               .includes(e.target.value.toLowerCase());
           });
         });
+
         if (e.target.value === "") {
           props.filteredFunction(props.allPractices);
           return;
