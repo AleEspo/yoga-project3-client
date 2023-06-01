@@ -8,6 +8,7 @@ export function SearchBar(props) {
           .includes(e.target.value.toLowerCase());
       });
     });
+    
     if (e.target.value === "") {
       props.filteredFunction(props.allPractices);
       return;

@@ -73,6 +73,7 @@ export function Practice() {
               allPractices={practice}
               className="mb-40"
             />
+            
             <div className="my-24 grid lg:grid-cols-3 gap-6 xl:gap-x-12">
               {filteredPractices.map((currentPractice) => {
                 return (
