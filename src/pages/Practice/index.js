@@ -8,6 +8,7 @@ import { MultiSearchBar } from "../../components/MultiSearchBar";
 export function Practice() {
   const [practice, setPractice] = useState([]);
   const [filteredPractices, setFilteredPractices] = useState([]);
+  const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
     setFilteredPractices(practice);
@@ -27,6 +28,19 @@ export function Practice() {
       }
     }
     fetchPractices();
+  }, []);
+
+  useEffect(() => {
+    async function fetchTeachers() {
+      try {
+        const response = await api.get("/user/teachers");
+        setTeachers(response.data);
+      } catch (err) {
+        console.log(err);
+        // aqui pode colocar TOAST
+      }
+    }
+    fetchTeachers();
   }, []);
 
   // button for ADMIN + TEACHER on my order
@@ -64,15 +78,17 @@ export function Practice() {
               Choose your practice
             </h2>
             <h4 className="font-semibold text-xl text-center mb-12">
-              Here you can find a list of all Yoga classes available.
-              Type something in the searchbar and book your next Yoga Class.
+              Here you can find a list of all Yoga classes available. Type
+              something in the searchbar and book your next Yoga Class.
             </h4>
             <MultiSearchBar
               filteredFunction={setFilteredPractices}
               // provare a mandare stato con filteredPractice
               allPractices={practice}
+              allTeachers={teachers}
               className="mb-40"
             />
+
             <div className="my-24 grid lg:grid-cols-3 gap-6 xl:gap-x-12">
               {filteredPractices.map((currentPractice) => {
                 return (
@@ -100,8 +116,12 @@ export function Practice() {
                         </div>
                       </div>
                       <div className="p-6">
-                        <h5 className="font-bold text-lg mb-3">{currentPractice.name}</h5>
-                        <h5 className="font-bold text-lg mb-3">{currentPractice.time}</h5>
+                        <h5 className="font-bold text-lg mb-3">
+                          {currentPractice.name}
+                        </h5>
+                        <h5 className="font-bold text-lg mb-3">
+                          {currentPractice.time}
+                        </h5>
                         <p className="text-gray-500 mb-4">
                           <small>
                             Published <u>{currentPractice.createdAt}</u> by
@@ -114,26 +134,30 @@ export function Practice() {
                           {currentPractice.description}
                         </p>
                         {loggedInUser ? (
-                          currentPractice.placesLeft ?
-                          (<button
-                            onClick={() => {
-                              handleCreateOrder(
-                                currentPractice._id,
-                                currentPractice.price
-                              );
-                            }}
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                          >Book
-                          </button>) :
-                          (<button
-                            disabled="true"
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                          >No Places Left
-                          </button>)
+                          currentPractice.placesLeft ? (
+                            <button
+                              onClick={() => {
+                                handleCreateOrder(
+                                  currentPractice._id,
+                                  currentPractice.price
+                                );
+                              }}
+                              data-mdb-ripple="true"
+                              data-mdb-ripple-color="light"
+                              className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            >
+                              Book
+                            </button>
+                          ) : (
+                            <button
+                              disabled="true"
+                              data-mdb-ripple="true"
+                              data-mdb-ripple-color="light"
+                              className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            >
+                              No Places Left
+                            </button>
+                          )
                         ) : (
                           <Link to="/login">
                             <button

@@ -16,13 +16,6 @@ export function ProfilePage(props) {
     },
   ];
 
-  console.log(props.students);
-  console.log(props.practices);
-  console.log(props.photo1);
-  console.log(props.photo2);
-  console.log(props.photo3);
-  console.log(props.photo4);
-
   return (
     <div className="bg-white">
       <div>

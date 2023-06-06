@@ -13,8 +13,7 @@ const RangeSlider = (_props) => {
           className={cn({
             "h-full": !isVertical,
             "w-full": isVertical,
-            "aspect-square rounded-full bg-indigo-500 text-xs text-white flex items-center justify-center cursor-grab":
-              true,
+            "aspect-square rounded-full bg-blue-600 text-xs text-white flex items-center justify-center cursor-grab": true,
           })}
         >
           {state.valueNow}
@@ -35,7 +34,7 @@ const RangeSlider = (_props) => {
               "w-1/4 left-1/2 -translate-x-1/2": isVertical,
               "rounded-full": true,
               "bg-gray-200": isMulti ? isFirst || isLast : isLast,
-              "bg-indigo-500": isMulti ? !isFirst || !isLast : isFirst,
+              "bg-blue-600": isMulti ? !isFirst || !isLast : isFirst,
             })}
           ></div>
         );

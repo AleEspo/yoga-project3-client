@@ -11,8 +11,6 @@ export function Profile() {
 
   const { setLoggedInUser } = useContext(AuthContext);
 
-  console.log(`this is user data: ${userData}`)
-
   useEffect(() => {
     async function fetchUser() {
       try {

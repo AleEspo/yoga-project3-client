@@ -6,12 +6,12 @@ import { AuthContext } from "../../context/authContext";
 
 export function ModifyProfile() {
   const navigate = useNavigate();
-  
+
   const { loggedInUser } = useContext(AuthContext);
-  console.log(loggedInUser);
 
   const [form, setForm] = useState({
     name: "",
+    email: "",
     about: "",
     country: "",
     age: "",
@@ -21,8 +21,6 @@ export function ModifyProfile() {
     otherPhotos: [],
   });;
 
-  console.log(form)
-
   // deconstruir img?
   //   const { img } = form
 
@@ -31,7 +29,7 @@ export function ModifyProfile() {
     async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
-
+        // delete password for security reasons
         delete response.data._id;
 
         setForm(response.data);
@@ -111,6 +109,7 @@ export function ModifyProfile() {
     }
   }
 
+  // check logic on updating user info through _id
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -126,17 +125,12 @@ export function ModifyProfile() {
       });
 
       // [form.img: imgURL] ??
-      
-      console.log(form)
 
-      // navigate("/profile");
+      // navigate("/profile"); OR toast
     } catch (err) {
       console.log(err);
     }
   }
-
-  console.log(`Img is: ${img}`)
-
 
   return (
     <>
@@ -148,10 +142,11 @@ export function ModifyProfile() {
         name={form.name}
         email={form.email}
         about={form.about}
-        county={form.country}
+        country={form.country}
         age={form.age}
         img={form.img}
         coverPhoto={form.coverPhoto}
+        otherPhotos={form.otherPhotos}
       />
     </>
   );
