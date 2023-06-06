@@ -3,12 +3,9 @@ import RangeSlider from "./RangeSlider.js";
 import { useEffect } from "react";
 
 export function MultiSearchBar(props) {
-  function fetchTeachers() {
-    const teachers = props.allPractices.map((practice) => {
-      return practice.teacher;
-    });
-    return teachers;
-  }
+
+  const teachers = props.allTeachers
+
   // it repeats teachers
 
   // function fetchStyles() {
@@ -180,7 +177,8 @@ export function MultiSearchBar(props) {
               name="teacher"
               onChange={handleFilter}
             >
-              {fetchTeachers().map((teacher) => {
+              <option value=""></option>
+              {teachers.map((teacher) => {
                 return <option value={teacher._id}>{teacher.name}</option>;
               })}
             </select>
