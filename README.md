@@ -6,8 +6,8 @@ ACCOUNT TEST:
 
 TEACHER
 email: mark@yogateacher.com
-password: Safe@password_1
+password: ******
 
 STUDENT
 email: amanda@yogastudent.com
-password: Safe@password_1
+password: ******
