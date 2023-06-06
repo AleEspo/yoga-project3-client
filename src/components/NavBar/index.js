@@ -23,7 +23,6 @@ export function NavBar() {
     async function fetchUser() {
       try {
         const response = await api.get("/user/profile");
-        console.log(response.data);
         setUserData(response.data);
       } catch (err) {
         console.log(err);
@@ -192,7 +191,7 @@ export function NavBar() {
                               leaveTo="transform opacity-0 scale-95"
                             >
                               <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                
+
                               <Menu.Item key="Settings">
                                   {({ active }) => (
                                     <Link to="/profile">
@@ -207,7 +206,7 @@ export function NavBar() {
                                     </Link>
                                   )}
                                 </Menu.Item>
-                                
+
                                 {/* <Menu.Item key="Settings">
                                   {({ active }) => (
                                     <Link to="/profile">

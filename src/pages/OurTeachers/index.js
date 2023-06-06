@@ -12,6 +12,8 @@ export function OurTeachers() {
     setFilteredTeachers(teachers);
   }, [teachers]);
 
+  console.log(teachers)
+
   //   const { loggedInUser } = useContext(AuthContext);
 
   // o setOrder não muda os ordens em tempo pra renderizar a div
