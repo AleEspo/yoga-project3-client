@@ -34,6 +34,7 @@ export function MultiSearchBar(props) {
   const [form, setForm] = useState({
     name: "",
     teacher: "",
+    level: "",
     style: "",
     // type: [Personal, Group] ?
     // level: [], // beginner, intermediate, advanced -> need to upgrate class model in the backend
@@ -68,6 +69,8 @@ export function MultiSearchBar(props) {
         console.log(practiceHour);
         const practiceName = practice.name.toLowerCase();
         console.log(practiceName);
+        const practiceLevel = practice.level;
+        console.log(practiceLevel);
         const practiceTeacher = practice.teacher._id;
         console.log(practiceTeacher);
         const practiceStyle = practice.tag;
@@ -77,6 +80,7 @@ export function MultiSearchBar(props) {
           (form.name === "" || practiceName.includes(form.name)) &&
           (form.timeFrom === 0 || practiceHour > form.timeFrom) &&
           (form.timeTo === 24 || practiceHour < form.timeTo) &&
+          (form.level === "" || practiceLevel.includes(form.level)) &&
           (form.teacher === "" || practiceTeacher.includes(form.teacher)) &&
           (form.style === "" || practiceStyle.includes(form.style))
         ) {
@@ -181,6 +185,40 @@ export function MultiSearchBar(props) {
               {teachers.map((teacher) => {
                 return <option value={teacher._id}>{teacher.name}</option>;
               })}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-2 p-4">
+            <label htmlFor="level" className="text-left">
+              Select a level:
+            </label>
+            <select
+              className="
+                  form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                "
+              id="level"
+              value={form.level}
+              name="level"
+              onChange={handleFilter}
+            >
+              <option value=""></option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
             </select>
           </div>
 
