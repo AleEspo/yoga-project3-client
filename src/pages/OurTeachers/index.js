@@ -19,9 +19,6 @@ export function OurTeachers() {
     async function fetchTeachers() {
       try {
         const response = await api.get("/user/teachers");
-
-        console.log(response.data);
-        // ERRO? UNDEFINED
         setTeachers(response.data);
       } catch (err) {
         console.log(err);
@@ -29,8 +26,6 @@ export function OurTeachers() {
     }
     fetchTeachers();
   }, []);
-
-  console.log(teachers);
 
   return (
     <>

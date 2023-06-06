@@ -6,16 +6,6 @@ export function MultiSearchBar(props) {
 
   const teachers = props.allTeachers
 
-  // it repeats teachers
-
-  // function fetchStyles() {
-  //   const styles = props.allPractices.map((practice) => {
-  //     return practice.tag;
-  //   });
-  //   console.log(styles);
-  //   return styles;
-  // }
-
   const styles = [
     "",
     "Vinyasa",
@@ -26,43 +16,17 @@ export function MultiSearchBar(props) {
     "Kundalini",
   ];
 
-  // const [timeFrom, setTimeFrom] = useState([0]);
-  // console.log(timeFrom);
-  // const [timeTo, setTimeTo] = useState([24]);
-  // console.log(timeTo);
-
   const [form, setForm] = useState({
     name: "",
     teacher: "",
     level: "",
     style: "",
     // type: [Personal, Group] ?
-    // level: [], // beginner, intermediate, advanced -> need to upgrate class model in the backend
     timeFrom: 0,
     timeTo: 24,
   });
-  console.log(form);
-
-  // const [searchQuery, setSearchQuery] = useState("")
-
-  // console.log(timeFrom);
-  // console.log(timeTo);
-
-  // function crossFilters(from, to, query) {
-  //   props.filteredFunction(() => {
-  //       if( props.allPractices.length > 0 ){
-  //         return props.allPractices.filter((practice) => {
-  //           const hour = parseInt(practice.time.split(":")[0]);
-  //           console.log(hour)
-  //           const name = practice.name.toLowerCase()
-  //           return (hour > from && hour < to && name.includes(query))
-  //         });
-  //       }
-  //   });
-  // }
 
   useEffect(() => {
-    console.log(form);
     props.filteredFunction(() => {
       return props.allPractices.filter((practice) => {
         const practiceHour = parseInt(practice.time.split(":")[0]);
@@ -93,18 +57,6 @@ export function MultiSearchBar(props) {
   }, [form]);
 
   function handleFilter(e) {
-    // // return props.allPractices.filter((currentElement) => {
-    // //   return currentElement.name
-    // //     .toLowerCase()
-    // //     .includes(form.name.toLowerCase());
-    // // });
-    // // });
-
-    // // if (form.name === "") {
-    // //   props.filteredFunction(props.allPractices); // not ALL pracrtices, but ...form
-    // //   return;
-    // // }
-
     if (Array.isArray(e)) {
       setForm({
         ...form,
@@ -112,13 +64,11 @@ export function MultiSearchBar(props) {
         timeTo: e[1],
       });
     } else {
-      // setSearchQuery(e.target.value);
       setForm({
         ...form,
         [e.target.name]: e.target.value,
       });
     }
-    // crossFilters(timeFrom, timeTo, searchQuery);
   }
 
   return (
@@ -183,7 +133,7 @@ export function MultiSearchBar(props) {
             >
               <option value=""></option>
               {teachers.map((teacher) => {
-                return <option value={teacher._id}>{teacher.name}</option>;
+                return <option key={teacher._id} value={teacher._id}>{teacher.name}</option>;
               })}
             </select>
           </div>
@@ -249,7 +199,7 @@ export function MultiSearchBar(props) {
               onChange={handleFilter}
             >
               {styles.map((style) => {
-                return <option value={style}>{style}</option>;
+                return <option key={style} value={style}>{style}</option>;
               })}
             </select>
           </div>

@@ -26,8 +26,6 @@ export function Home() {
     fetchPractices();
   }, []);
 
-  console.log(practice);
-
   return (
     <>
       <>
@@ -267,8 +265,10 @@ export function Home() {
               Latest classes
             </h2>
 
-            {(practice === []) ? (
-              <div>No classes</div>
+            {(practice === null) ? (
+              <div>
+                <p>No classes</p>
+              </div>
             ) : (
               practice.slice(0, 5).map((currentPractice) => {
                 return (
