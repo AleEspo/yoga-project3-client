@@ -118,16 +118,7 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  We designed our platform to make the booking process simple
-                  and stress-free. Simply browse our selection of classes and
-                  choose the one that best fits your needs. You can filter by
-                  location, time, and level of difficulty to find the perfect
-                  class for you. Once you have selected your class, you can
-                  easily book your spot and make your payment through our secure
-                  payment system. We offer both in-person and online classes, so
-                  you can choose the option that works best for you. Our
-                  platform allows you to easily manage your bookings, so you can
-                  quickly and easily change or cancel your class if you need to.
+                We designed our platform to make the booking process simple and stress-free. Simply browse through our selection of classes and choose the one that best fits your needs. You can filter classes by location, time, and level of difficulty to find the perfect match. We offer both in-person and online classes, allowing you to choose the option that works best for you. Additionally, our platform provides easy management of your bookings, enabling quick changes or cancellations if needed.
                 </p>
               </div>
             </div>
@@ -179,15 +170,7 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  Yoga Home is also a place for you to connect with other
-                  students and teachers who share your passion for yoga. Here,
-                  you can join groups, discuss different types of yoga, share
-                  tips and advice, and build relationships with like-minded
-                  people. Whether you're a beginner or an experienced yogi, Yoga
-                  Home is a great place to learn, grow, and connect. Our
-                  platform also offers features like messaging and commenting,
-                  so you can easily connect with others and get the support you
-                  need.
+                Yoga Home is not just a place to practice yoga, but also a platform for you to connect with fellow students and teachers who share your passion. Here, you can join groups, engage in discussions about different types of yoga, share tips and advice, and forge relationships with like-minded individuals. Whether you're a beginner or an experienced yogi, Yoga Home provides an excellent environment to learn, grow, and connect. Additionally, our platform offers features such as messaging and commenting, making it easy for you to connect with others and receive the support you need.
                 </p>
               </div>
             </div>
@@ -239,16 +222,7 @@ export function Home() {
                   </small>
                 </p> */}
                 <p className="text-gray-500">
-                  We understand the importance of staying organized and keeping
-                  track of your classes. Our app comes equipped with
-                  notification reminders that can be customized to suit your
-                  needs. In addition to reminders, our app also provides
-                  progress tracking features. Our progress tracking features are
-                  designed to help you stay motivated and focused on your
-                  studies. With our app, you can also keep track of your
-                  teachers and fellow students. Our social networking features
-                  allow you to connect with other students and teachers in your
-                  classes, making it easy to stay in touch.
+                We recognize the significance of staying organized and keeping track of your classes. Our app is equipped with customizable notification reminders to cater to your specific needs. Along with reminders, our app also offers progress tracking features. These features are designed to help you maintain motivation and focus on your studies. With our app, you can conveniently monitor your teachers and fellow students as well. Our social networking features enable seamless connection with other students and teachers in your classes, facilitating easy communication and interaction.
                 </p>
               </div>
             </div>
@@ -369,9 +343,7 @@ export function Home() {
                       d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
                     ></path>
                   </svg>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-                  eos id officiis hic tenetur quae quaerat ad velit ab hic
-                  tenetur.
+                  Yoga Home revolutionized my yoga experience! Easy bookings, vibrant community, and flexible changes. Highly recommended!
                 </p>
                 <ul className="flex justify-center mb-0">
                   <li>
@@ -489,8 +461,7 @@ export function Home() {
                       d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
                     ></path>
                   </svg>
-                  Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                  corporis suscipit laboriosam, nisi ut aliquid commodi.
+                  Yoga Home is exceptionally organized and convenient! Intuitive interface, flexible classes, and networking with amazing yogis.
                 </p>
                 <ul className="flex justify-center mb-0">
                   <li>
@@ -608,8 +579,7 @@ export function Home() {
                       d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
                     ></path>
                   </svg>
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                  blanditiis praesentium voluptatum deleniti atque corrupti.
+                  Yoga Home keeps me on track with notifications, motivates with progress tracking, and connects me with teachers and likewise people.
                 </p>
                 <ul className="flex justify-center mb-0">
                   <li>
