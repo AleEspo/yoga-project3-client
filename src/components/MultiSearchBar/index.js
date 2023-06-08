@@ -3,21 +3,8 @@ import RangeSlider from "./RangeSlider.js";
 import { useEffect } from "react";
 
 export function MultiSearchBar(props) {
-  function fetchTeachers() {
-    const teachers = props.allPractices.map((practice) => {
-      return practice.teacher;
-    });
-    return teachers;
-  }
-  // it repeats teachers
 
-  // function fetchStyles() {
-  //   const styles = props.allPractices.map((practice) => {
-  //     return practice.tag;
-  //   });
-  //   console.log(styles);
-  //   return styles;
-  // }
+  const teachers = props.allTeachers
 
   const styles = [
     "",
@@ -29,48 +16,25 @@ export function MultiSearchBar(props) {
     "Kundalini",
   ];
 
-  // const [timeFrom, setTimeFrom] = useState([0]);
-  // console.log(timeFrom);
-  // const [timeTo, setTimeTo] = useState([24]);
-  // console.log(timeTo);
-
   const [form, setForm] = useState({
     name: "",
     teacher: "",
+    level: "",
     style: "",
     // type: [Personal, Group] ?
-    // level: [], // beginner, intermediate, advanced -> need to upgrate class model in the backend
     timeFrom: 0,
     timeTo: 24,
   });
-  console.log(form);
-
-  // const [searchQuery, setSearchQuery] = useState("")
-
-  // console.log(timeFrom);
-  // console.log(timeTo);
-
-  // function crossFilters(from, to, query) {
-  //   props.filteredFunction(() => {
-  //       if( props.allPractices.length > 0 ){
-  //         return props.allPractices.filter((practice) => {
-  //           const hour = parseInt(practice.time.split(":")[0]);
-  //           console.log(hour)
-  //           const name = practice.name.toLowerCase()
-  //           return (hour > from && hour < to && name.includes(query))
-  //         });
-  //       }
-  //   });
-  // }
 
   useEffect(() => {
-    console.log(form);
     props.filteredFunction(() => {
       return props.allPractices.filter((practice) => {
         const practiceHour = parseInt(practice.time.split(":")[0]);
         console.log(practiceHour);
         const practiceName = practice.name.toLowerCase();
         console.log(practiceName);
+        const practiceLevel = practice.level;
+        console.log(practiceLevel);
         const practiceTeacher = practice.teacher._id;
         console.log(practiceTeacher);
         const practiceStyle = practice.tag;
@@ -80,6 +44,7 @@ export function MultiSearchBar(props) {
           (form.name === "" || practiceName.includes(form.name)) &&
           (form.timeFrom === 0 || practiceHour > form.timeFrom) &&
           (form.timeTo === 24 || practiceHour < form.timeTo) &&
+          (form.level === "" || practiceLevel.includes(form.level)) &&
           (form.teacher === "" || practiceTeacher.includes(form.teacher)) &&
           (form.style === "" || practiceStyle.includes(form.style))
         ) {
@@ -92,18 +57,6 @@ export function MultiSearchBar(props) {
   }, [form]);
 
   function handleFilter(e) {
-    // // return props.allPractices.filter((currentElement) => {
-    // //   return currentElement.name
-    // //     .toLowerCase()
-    // //     .includes(form.name.toLowerCase());
-    // // });
-    // // });
-
-    // // if (form.name === "") {
-    // //   props.filteredFunction(props.allPractices); // not ALL pracrtices, but ...form
-    // //   return;
-    // // }
-
     if (Array.isArray(e)) {
       setForm({
         ...form,
@@ -111,13 +64,11 @@ export function MultiSearchBar(props) {
         timeTo: e[1],
       });
     } else {
-      // setSearchQuery(e.target.value);
       setForm({
         ...form,
         [e.target.name]: e.target.value,
       });
     }
-    // crossFilters(timeFrom, timeTo, searchQuery);
   }
 
   return (
@@ -180,9 +131,44 @@ export function MultiSearchBar(props) {
               name="teacher"
               onChange={handleFilter}
             >
-              {fetchTeachers().map((teacher) => {
-                return <option value={teacher._id}>{teacher.name}</option>;
+              <option value=""></option>
+              {teachers.map((teacher) => {
+                return <option key={teacher._id} value={teacher._id}>{teacher.name}</option>;
               })}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-2 p-4">
+            <label htmlFor="level" className="text-left">
+              Select a level:
+            </label>
+            <select
+              className="
+                  form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                "
+              id="level"
+              value={form.level}
+              name="level"
+              onChange={handleFilter}
+            >
+              <option value=""></option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
             </select>
           </div>
 
@@ -213,7 +199,7 @@ export function MultiSearchBar(props) {
               onChange={handleFilter}
             >
               {styles.map((style) => {
-                return <option value={style}>{style}</option>;
+                return <option key={style} value={style}>{style}</option>;
               })}
             </select>
           </div>

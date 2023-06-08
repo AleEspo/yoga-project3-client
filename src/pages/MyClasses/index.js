@@ -12,7 +12,6 @@ export function MyOrders() {
   const navigate = useNavigate();
 
   const { loggedInUser } = useContext(AuthContext);
-  console.log(loggedInUser);
 
   // USER'S ORDERS
   // setOrder doesn't fetch orders in time to render the div
@@ -71,10 +70,6 @@ export function MyOrders() {
       console.log(err);
     }
   }
-
-
-  console.log(orders);
-  console.log(filterActiveOrders);
 
   return (
     <>

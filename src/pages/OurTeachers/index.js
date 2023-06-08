@@ -12,6 +12,8 @@ export function OurTeachers() {
     setFilteredTeachers(teachers);
   }, [teachers]);
 
+  console.log(teachers)
+
   //   const { loggedInUser } = useContext(AuthContext);
 
   // o setOrder não muda os ordens em tempo pra renderizar a div
@@ -19,9 +21,6 @@ export function OurTeachers() {
     async function fetchTeachers() {
       try {
         const response = await api.get("/user/teachers");
-
-        console.log(response.data);
-        // ERRO? UNDEFINED
         setTeachers(response.data);
       } catch (err) {
         console.log(err);
@@ -29,8 +28,6 @@ export function OurTeachers() {
     }
     fetchTeachers();
   }, []);
-
-  console.log(teachers);
 
   return (
     <>
