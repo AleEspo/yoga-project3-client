@@ -7,9 +7,9 @@ export function LoginForm(props) {
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/s/mark.svg?color=indigo&shade=600"
-              alt="Your Company"
+              className="mx-auto h-16 w-auto"
+              src="https://res.cloudinary.com/dvvtr5bi2/image/upload/v1686915979/YogaHome_logo1_i5ieja.svg"
+              alt="Yoga Home Logo"
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your account

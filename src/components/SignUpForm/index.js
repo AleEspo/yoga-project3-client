@@ -54,7 +54,7 @@ export function SignUpForm(props) {
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
-              className="mx-auto h-12 w-auto"
+              className="mx-auto h-16 w-auto"
               src="https://res.cloudinary.com/dvvtr5bi2/image/upload/v1686915979/YogaHome_logo1_i5ieja.svg"
               alt="Yoga Home Logo"
             />
