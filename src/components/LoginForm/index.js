@@ -1,7 +1,6 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 
 export function LoginForm(props) {
-
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -9,7 +8,7 @@ export function LoginForm(props) {
           <div>
             <img
               className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              src="https://tailwindui.com/img/s/mark.svg?color=indigo&shade=600"
               alt="Your Company"
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
@@ -59,7 +58,7 @@ export function LoginForm(props) {
               </div>
             </div>
 
-{/* REMEMBER ME & FORGOT PASSWORD */}
+            {/* REMEMBER ME & FORGOT PASSWORD */}
             {/* <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input

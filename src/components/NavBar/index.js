@@ -130,8 +130,8 @@ export function NavBar() {
                     <div className="flex-shrink-0">
                       <img
                         className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
+                        src="https://res.cloudinary.com/dvvtr5bi2/image/upload/v1686915979/YogaHome_logo1_i5ieja.svg"
+              alt="Yoga Home Logo"
                       />
                     </div>
                     <div className="hidden md:block">
